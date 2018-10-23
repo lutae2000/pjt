@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>레시피</title>
+<title>레시피...</title>
 
 
 <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/index.css" type="text/css" />
