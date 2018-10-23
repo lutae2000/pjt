@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+	
+	<select id="allList"  resultType="com.javaex.vo.std_info_vo">
+		<![CDATA[
+			select 
+			recipe_code
+	  		,recipe_name
+	  		,intro
+	  		,food_type_code
+	  		,food_type
+	  		,food_class_code
+	  		,food_class
+	  		,cooking_time
+	  		,kalo
+	  		,quantity
+	  		,difficult
+	  		,ingre_class
+	  		,price_class
+	  		,img_url
+	  		,detail_url 
+		from standard_info 
+		order by difficult asc
+        ]]>
+	</select>
+	
+	
+	<select id="search" parameterType="String" resultType="com.javaex.vo.std_info_vo">
+		<![CDATA[
+			select 
+			recipe_code
+	  		,recipe_name
+	  		,intro
+	  		,food_type_code
+	  		,food_type
+	  		,food_class_code
+	  		,food_class
+	  		,cooking_time
+	  		,kalo
+	  		,quantity
+	  		,difficult
+	  		,ingre_class
+	  		,price_class
+	  		,img_url
+	  		,detail_url
+		     from standard_info
+		     where recipe_name like #{recipe_name}||'%'
+		     
+		]]>
+	</select>
+	
+	<!-- <select id="readContent" parameterType="String" resultType="com.javaex.vo.std_info_vo">
+		<![CDATA[
+		select
+		]]
+	</select> -->
+
+
+</mapper>
