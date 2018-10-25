@@ -27,7 +27,7 @@
 	</select>
 	
 	
-	<select id="allListCount" parameterType="String" >
+	<select id="allListCount" parameterType="String" resultType="java.lang.String">
 		<![CDATA[
 			select 
 			count(*)
@@ -55,7 +55,7 @@
 		  		,img_url
 		  		,detail_url 
 		     from standard_info
-		     where recipe_name like #'%'||{recipe_name}||'%'
+		     where recipe_name like '%'||#{recipe_name}||'%'
 		     
 		]]>
 	</select>
@@ -115,14 +115,16 @@
 	</select>
 	
 	<!-- 검색카운트 -->
-	<select id="searchedCount" parameterType="String" >
+	<select id="searchedCount" parameterType="String" resultType="java.lang.String">
 		<![CDATA[
 			select 
-				count(*)
+				count(recipe_name) 
 			from standard_info
-		     where recipe_name like #'%'||{recipe_name}||'%'
+		     where recipe_name like '%'||#{recipe_name}||'%'
 		]]>
 		
 	</select>
+	
+	
 
 </mapper>

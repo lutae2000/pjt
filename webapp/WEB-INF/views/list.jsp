@@ -57,9 +57,8 @@
         <input type="text"  class="searchWrd"  name="kwd" value='' onkeypress="press(event);" title="검색어 입력" />	
         <span class="searchbtn"><a href="list/search">검색</a></span>        
     </div> -->
-    <%-- <p class="search_txt">총 <strong>${list.totalCount }</strong>메뉴 중 <span>${list.searchedCount }</span>개의 메뉴가 검색되었습니다.</p>
- --%>
-<%-- ${list.totalCount }개중 ${list.searchedCount }개 --%>
+    <p class="search_txt">총 <strong>${list.totalCount }</strong>메뉴 중 <span>${list.searchedCount }</span>개의 메뉴가 검색되었습니다.</p>
+
     <div class="bg_box" id="bg_box01" style="display:none;">
     	<p class="search_txt" id="totalCntView" name="totalCntView"></p>
     </div>
@@ -72,7 +71,7 @@
     
     
  	<table>
-	<c:forEach items="${list}" var="vo">
+	<c:forEach items="${list.std_info_List}" var="vo">
 		<tr>
 			<td>${vo.recipe_name }</td>
 			

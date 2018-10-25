@@ -62,9 +62,20 @@
 		<td>${htcl.how_to_cook }</td>
 		<td><img src="${htcl.how_to_cook_img }" width="200"></td>
 	</tr>
+	
 	</c:forEach>
+	
+	
 </table>
 
-			
+<hr>
+<h4>조리 팁</h4>
+<table>
+<c:forEach items="${recipe.howtocookList }" var="htc">
+	<tr>
+		<td>${htc.tip }</td>
+	</tr>
+	</c:forEach>
+</table>			
 </body>
 </html>

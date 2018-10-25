@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import com.javaex.service.UserService;
 import com.javaex.vo.Std_info_Vo;
 
@@ -61,6 +62,20 @@ public class UserController {
 		System.out.println(count.toString());
 		model.addAttribute("list",count);
 		return "list";
+	}
+	
+	@RequestMapping("/recommandPage")
+	public String recommandPage() {
+		return "recommand";
+	}
+	
+	@RequestMapping(value="/recommand", method=RequestMethod.GET)
+	public String recommand(@RequestParam("foodType") String foodType, Model model) {
+		System.out.println(foodType);
+		List<Std_info_Vo> recommandList = userService.getRecommand(foodType);
+		System.out.println(recommandList.toString());
+		model.addAttribute("recommandRecipe", recommandList);
+		return "recommand";
 	}
 
 

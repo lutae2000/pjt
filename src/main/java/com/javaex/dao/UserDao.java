@@ -49,6 +49,7 @@ public class UserDao {
 	
 	//메뉴 검색된 갯수
 	public String searchedCount(String searchedcount) {
+		System.out.println(searchedcount);
 		return sqlsession.selectOne("user.searchedCount",searchedcount);
 	}
 	
@@ -56,6 +57,17 @@ public class UserDao {
 	public String totalCount(String totalCount) {
 		return sqlsession.selectOne("user.allListCount", totalCount);
 	}
+	
+	//랜덤 추천
+	public  List<Std_info_Vo> recommandDao(String recommand) {
+		List<Std_info_Vo> recommandList = sqlsession.selectList("recommandation.recommandFoodType", recommand);
+//		System.out.println(recommandList.toString());
+		
+		
+		return recommandList;
+	}
+	
+	
 	
 	
 }

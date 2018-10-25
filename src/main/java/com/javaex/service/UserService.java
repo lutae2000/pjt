@@ -28,13 +28,13 @@ public class UserService {
 	
 	public Map<String, Object> getSearchList(String searchKwd){
 		Map<String, Object> searchedResult = new HashMap<String, Object>();
-		List<Std_info_Vo> std_info_Vo = userDao.searchedList(searchKwd);
+		List<Std_info_Vo> std_info_List = userDao.searchedList(searchKwd);
 		String searchedCount = userDao.searchedCount(searchKwd);
 		String totalCount = userDao.totalCount(searchKwd);
 		
 		searchedResult.put("searchedCount", searchedCount);
 		searchedResult.put("totalCount", totalCount);
-		searchedResult.put("std_info_Vo", std_info_Vo);
+		searchedResult.put("std_info_List", std_info_List);
 		return searchedResult;
 	}
 	
@@ -52,6 +52,12 @@ public class UserService {
 		recipe.put("howtocookList", howtocookList);
 		
 		return recipe;
+	}
+	
+	public List<Std_info_Vo> getRecommand(String recipe){
+		List<Std_info_Vo> recommandList = userDao.recommandDao(recipe);
+//		System.out.println(recommandList.toString());
+		return recommandList;
 	}
 
 }
