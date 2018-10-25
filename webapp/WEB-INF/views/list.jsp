@@ -57,13 +57,14 @@
         <input type="text"  class="searchWrd"  name="kwd" value='' onkeypress="press(event);" title="검색어 입력" />	
         <span class="searchbtn"><a href="list/search">검색</a></span>        
     </div> -->
-    <p class="search_txt">총 <strong>5949</strong>테이블 중 <span>12</span>개의 메뉴가 검색되었습니다.</p>
-
+    <%-- <p class="search_txt">총 <strong>${list.totalCount }</strong>메뉴 중 <span>${list.searchedCount }</span>개의 메뉴가 검색되었습니다.</p>
+ --%>
+<%-- ${list.totalCount }개중 ${list.searchedCount }개 --%>
     <div class="bg_box" id="bg_box01" style="display:none;">
     	<p class="search_txt" id="totalCntView" name="totalCntView"></p>
     </div>
     
-    <div class="image">
+    
       <form id="search" action="${pageContext.request.contextPath }/list/search" method="get">
     	<input type="text" id="kwd" name="kwd" placeholder="메뉴 검색">
     	<input type="submit" value="검색">
@@ -74,13 +75,15 @@
 	<c:forEach items="${list}" var="vo">
 		<tr>
 			<td>${vo.recipe_name }</td>
-			<div class="text">
-			 <td><img src="${vo.img_url}" width="300"></td> 
-			 </div>
+			
+			 <td>
+			 	<a href="${pageContext.request.contextPath}/readContent?recipe_code=${vo.recipe_code }"><img src="${vo.img_url}" width="300"></a>
+			 </td> 
+			 
 		</tr>
 	</c:forEach>
 	</table>
-    </div>
+    
     
 	<div id="tabCon01"></div>
     <!-- <p class="title">요리 테이블 목록</p> -->

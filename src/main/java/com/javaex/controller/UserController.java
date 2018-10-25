@@ -1,6 +1,7 @@
 package com.javaex.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.UserService;
-import com.javaex.vo.std_info_vo;
+import com.javaex.vo.Std_info_Vo;
 
 @Controller
 public class UserController {
@@ -20,7 +21,7 @@ public class UserController {
 	
 	@RequestMapping("/allList")
 	public String getUserList(Model model){
-		List<std_info_vo> allList = userService.getAllList();
+		List<Std_info_Vo> allList = userService.getAllList();
 		
 		System.out.println(allList.toString());
 		
@@ -28,18 +29,25 @@ public class UserController {
 		return "allList";
 	}
 	
-//	@RequestMapping(value="readContent", method=RequestMethod.GET)
-//	public String readContent(@RequestParam("reci_name") String reci_name,Model model) {
-//		std_info_vo std_info_vo = userService.getContent(reci_name);
-//		model.addAttribute("readRecipe", std_info_vo);
-//		return "list/readContent";
-//	}
+	@RequestMapping(value="/readContent", method=RequestMethod.GET)
+	public String readContent(@RequestParam("recipe_code") String recipe_code, Model model) {
+		System.out.println(recipe_code);
+		
+		Map<String, Object> recipe = userService.getContent(recipe_code);
+		System.out.println(recipe);
+		
+		model.addAttribute("recipe", recipe);
+		
+		
+		
+		return "readContent";
+	}
 
 	
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String list(Model model) {
-		List<std_info_vo> list = userService.getAllList();
+		List<Std_info_Vo> list = userService.getAllList();
 		model.addAttribute("list",list);
 		System.out.println(list.toString());
 		return "list";
@@ -48,9 +56,10 @@ public class UserController {
 	@RequestMapping(value="/list/search", method=RequestMethod.GET)
 	public String searchedList(@RequestParam("kwd") String kwd, Model model) {
 		System.out.println(kwd);
-		List<std_info_vo> searchedList = userService.getSearchList(kwd);
-		System.out.println(searchedList.toString());
-		model.addAttribute("list",searchedList);
+//		List<Std_info_Vo> searchedList = userService.getSearchList(kwd);
+		Map<String, Object> count = userService.getSearchList(kwd);
+		System.out.println(count.toString());
+		model.addAttribute("list",count);
 		return "list";
 	}
 

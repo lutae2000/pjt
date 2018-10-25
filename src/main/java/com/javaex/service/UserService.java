@@ -1,12 +1,16 @@
 package com.javaex.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.UserDao;
-import com.javaex.vo.std_info_vo;
+import com.javaex.vo.HowtocookVo;
+import com.javaex.vo.IngreVo;
+import com.javaex.vo.Std_info_Vo;
 
 @Service
 public class UserService {
@@ -14,12 +18,40 @@ public class UserService {
 	@Autowired
 	UserDao userDao;
 	
-	public List<std_info_vo> getAllList(){
+	public List<Std_info_Vo> getAllList(){
 		return userDao.getAllList();
 	}
 	
-	public List<std_info_vo> getSearchList(String searchKwd){
-		return userDao.searchedList(searchKwd);
+//	public List<Std_info_Vo> getSearchList(String searchKwd){
+//		return userDao.searchedList(searchKwd);
+//	}
+	
+	public Map<String, Object> getSearchList(String searchKwd){
+		Map<String, Object> searchedResult = new HashMap<String, Object>();
+		List<Std_info_Vo> std_info_Vo = userDao.searchedList(searchKwd);
+		String searchedCount = userDao.searchedCount(searchKwd);
+		String totalCount = userDao.totalCount(searchKwd);
+		
+		searchedResult.put("searchedCount", searchedCount);
+		searchedResult.put("totalCount", totalCount);
+		searchedResult.put("std_info_Vo", std_info_Vo);
+		return searchedResult;
+	}
+	
+	
+	public Map<String, Object> getContent(String recipe_code){
+		
+		Map<String, Object> recipe = new HashMap<String, Object>();
+		
+		Std_info_Vo std_info_Vo  = userDao.readContent_std(recipe_code);
+		List<IngreVo> ingreList =  userDao.readIngre_info(recipe_code);
+		List<HowtocookVo> howtocookList = userDao.readContent_howToCook(recipe_code);
+		
+		recipe.put("std_info_Vo", std_info_Vo);
+		recipe.put("ingreList", ingreList);
+		recipe.put("howtocookList", howtocookList);
+		
+		return recipe;
 	}
 
 }

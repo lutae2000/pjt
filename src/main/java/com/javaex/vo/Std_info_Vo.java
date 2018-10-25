@@ -1,6 +1,6 @@
 package com.javaex.vo;
 
-public class std_info_vo {
+public class Std_info_Vo {
 	
 	private String recipe_code;
 	private String recipe_name;
@@ -18,10 +18,10 @@ public class std_info_vo {
 	private String img_url;
 	private String detail_url;
 	
-	public std_info_vo() {
+	public Std_info_Vo() {
 	}
 
-	public std_info_vo(
+	public Std_info_Vo(
 			String recipe_code,
 			String recipe_name,
 			String intro,

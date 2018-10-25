@@ -3,59 +3,126 @@
 
 <mapper namespace="user">
 	
-	<select id="allList"  resultType="com.javaex.vo.std_info_vo">
+	
+	<select id="allList" resultType="com.javaex.vo.Std_info_Vo">
+		<![CDATA[
+		select 
+				 recipe_code
+		  		,recipe_name
+		  		,intro
+		  		,food_type_code
+		  		,food_type
+		  		,food_class_code
+		  		,food_class
+		  		,cooking_time
+		  		,kalo
+		  		,quantity
+		  		,difficult
+		  		,ingre_class
+		  		,price_class
+		  		,img_url
+		  		,detail_url 
+		     from standard_info 
+		]]>
+	</select>
+	
+	
+	<select id="allListCount" parameterType="String" >
 		<![CDATA[
 			select 
-			recipe_code
-	  		,recipe_name
-	  		,intro
-	  		,food_type_code
-	  		,food_type
-	  		,food_class_code
-	  		,food_class
-	  		,cooking_time
-	  		,kalo
-	  		,quantity
-	  		,difficult
-	  		,ingre_class
-	  		,price_class
-	  		,img_url
-	  		,detail_url 
+			count(*)
 		from standard_info 
-		order by difficult asc
         ]]>
 	</select>
 	
 	
-	<select id="search" parameterType="String" resultType="com.javaex.vo.std_info_vo">
+	<select id="search" parameterType="String" resultType="com.javaex.vo.Std_info_Vo">
 		<![CDATA[
 			select 
-			recipe_code
-	  		,recipe_name
-	  		,intro
-	  		,food_type_code
-	  		,food_type
-	  		,food_class_code
-	  		,food_class
-	  		,cooking_time
-	  		,kalo
-	  		,quantity
-	  		,difficult
-	  		,ingre_class
-	  		,price_class
-	  		,img_url
-	  		,detail_url
+				 recipe_code
+		  		,recipe_name
+		  		,intro
+		  		,food_type_code
+		  		,food_type
+		  		,food_class_code
+		  		,food_class
+		  		,cooking_time
+		  		,kalo
+		  		,quantity
+		  		,difficult
+		  		,ingre_class
+		  		,price_class
+		  		,img_url
+		  		,detail_url 
 		     from standard_info
-		     where recipe_name like #{recipe_name}||'%'
+		     where recipe_name like #'%'||{recipe_name}||'%'
 		     
 		]]>
 	</select>
 	
-	<!-- <select id="readContent" parameterType="String" resultType="com.javaex.vo.std_info_vo">
+	<!-- 기본레시피정보 가져오기 -->
+	<select id="readContent_std" parameterType="String" resultType="com.javaex.vo.Std_info_Vo">
 		<![CDATA[
-		select
-		]]
-	</select> -->
-
+			select 
+				 recipe_code
+		  		,recipe_name
+		  		,intro
+		  		,food_type_code
+		  		,food_type
+		  		,food_class_code
+		  		,food_class
+		  		,cooking_time
+		  		,kalo
+		  		,quantity
+		  		,difficult
+		  		,ingre_class
+		  		,price_class
+		  		,img_url
+		  		,detail_url
+		     from standard_info
+		     where recipe_code = #{recipe_code}
+		]]>
+	</select>
+	
+	<!-- 재료리스트 가져오기 -->
+	<select id="readContent_ingre" parameterType="String" resultType="com.javaex.vo.IngreVo">
+		<![CDATA[
+			select 
+				 recipe_code
+				 ,INGRE_TURN
+				 ,INGRE_NAME
+				 ,INGRE_QUANTITY
+				 ,INGRE_TYPE_NAME 
+				 ,INGRE_QUANTITY 
+			from ingre_info
+			where recipe_code = #{recipe_code}
+		]]>
+		</select>
+		
+	<!-- 요리순서 리스트 -->
+	<select id="readContent_howToCook" parameterType="String" resultType="com.javaex.vo.HowtocookVo">
+		<![CDATA[
+			select 
+				recipe_code
+				,how_to_cook_order
+				,how_to_cook
+				,how_to_cook_img
+				,tip 
+			from howtocook
+			where recipe_code = #{recipe_code} 
+			order by how_to_cook_order asc
+		]]>
+	</select>
+	
+	<!-- 검색카운트 -->
+	<select id="searchedCount" parameterType="String" >
+		<![CDATA[
+			select 
+				count(*)
+			from standard_info
+		     where recipe_name like #'%'||{recipe_name}||'%'
+		]]>
+		
+	</select>
 
 </mapper>
