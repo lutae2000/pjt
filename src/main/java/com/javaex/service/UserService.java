@@ -19,22 +19,29 @@ public class UserService {
 	UserDao userDao;
 	
 	public List<Std_info_Vo> getAllList(){
-		return userDao.getAllList();
+		Map<String, Object> allListMap = new HashMap<String, Object>();
+		List<Std_info_Vo> allList = userDao.getAllList();
+		String totalCount = userDao.totalCount("");
+		String searchedCount = userDao.searchedCount("");
+		
+		allListMap.put("allList", allList);
+		allListMap.put("totalCount", totalCount);
+		allListMap.put("searchCount", searchedCount);
+		return allList;
 	}
 	
-//	public List<Std_info_Vo> getSearchList(String searchKwd){
-//		return userDao.searchedList(searchKwd);
-//	}
 	
-	public Map<String, Object> getSearchList(String searchKwd){
+	public Map<String, Object> getSearchMap(String searchKwd){
 		Map<String, Object> searchedResult = new HashMap<String, Object>();
 		List<Std_info_Vo> std_info_List = userDao.searchedList(searchKwd);
 		String searchedCount = userDao.searchedCount(searchKwd);
 		String totalCount = userDao.totalCount(searchKwd);
+//		List<Std_info_Vo> allList = userDao.getAllList();
 		
 		searchedResult.put("searchedCount", searchedCount);
 		searchedResult.put("totalCount", totalCount);
 		searchedResult.put("std_info_List", std_info_List);
+//		searchedResult.put("allList", allList);
 		return searchedResult;
 	}
 	

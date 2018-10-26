@@ -20,15 +20,6 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping("/allList")
-	public String getUserList(Model model){
-		List<Std_info_Vo> allList = userService.getAllList();
-		
-		System.out.println(allList.toString());
-		
-		model.addAttribute("allList", allList);
-		return "allList";
-	}
 	
 	@RequestMapping(value="/readContent", method=RequestMethod.GET)
 	public String readContent(@RequestParam("recipe_code") String recipe_code, Model model) {
@@ -38,9 +29,6 @@ public class UserController {
 		System.out.println(recipe);
 		
 		model.addAttribute("recipe", recipe);
-		
-		
-		
 		return "readContent";
 	}
 
@@ -48,19 +36,24 @@ public class UserController {
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String list(Model model) {
-		List<Std_info_Vo> list = userService.getAllList();
-		model.addAttribute("list",list);
-		System.out.println(list.toString());
-		return "list";
+		List<Std_info_Vo> allListMap = userService.getAllList();
+//		Map<String, Object> count = userService.
+		model.addAttribute("allList",allListMap);
+		System.out.println(allListMap.toString());
+		return "list"; 
 	}
 	
 	@RequestMapping(value="/list/search", method=RequestMethod.GET)
-	public String searchedList(@RequestParam("kwd") String kwd, Model model) {
-		System.out.println(kwd);
-//		List<Std_info_Vo> searchedList = userService.getSearchList(kwd);
-		Map<String, Object> count = userService.getSearchList(kwd);
-		System.out.println(count.toString());
-		model.addAttribute("list",count);
+	public String searchedList(@RequestParam(value="kwd", defaultValue="")String kwd, Model model) {
+//		System.out.println(kwd);
+		
+		Map<String, Object> searchedList = userService.getSearchMap(kwd);
+	/*	Map<String, Object> count = userService.getSearchMap(kwd);
+		
+		System.out.println(count.toString());*/
+		
+		model.addAttribute("searchedList",searchedList);
+//		model.addAttribute("count",count);
 		return "list";
 	}
 	

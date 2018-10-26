@@ -1,6 +1,7 @@
 package com.javaex.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class UserDao {
 	public List<Std_info_Vo> searchedList(String searchKwd){
 //		System.out.println(searchKwd.toString());
 //		System.out.println(searchedList.toString());
-		return sqlsession.selectList("user.search", searchKwd);
+		return sqlsession.selectList("user.searchedList", searchKwd);
 	}
 	
 	//기본레시피정보 가져오기
@@ -55,6 +56,7 @@ public class UserDao {
 	
 	//메뉴 총 갯수
 	public String totalCount(String totalCount) {
+		System.out.println(totalCount.toString());
 		return sqlsession.selectOne("user.allListCount", totalCount);
 	}
 	

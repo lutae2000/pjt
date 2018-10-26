@@ -26,17 +26,7 @@
 		]]>
 	</select>
 	
-	
-	<select id="allListCount" parameterType="String" resultType="java.lang.String">
-		<![CDATA[
-			select 
-			count(*)
-		from standard_info 
-        ]]>
-	</select>
-	
-	
-	<select id="search" parameterType="String" resultType="com.javaex.vo.Std_info_Vo">
+	<select id="searchedList" parameterType="String" resultType="com.javaex.vo.Std_info_Vo">
 		<![CDATA[
 			select 
 				 recipe_code
@@ -55,10 +45,36 @@
 		  		,img_url
 		  		,detail_url 
 		     from standard_info
-		     where recipe_name like '%'||#{recipe_name}||'%'
-		     
 		]]>
+	    <if test="_parameter != null">
+	     	<![CDATA[
+	     		 where recipe_name like '%'||#{recipe_name}||'%'
+	     	]]>
+	    </if>
 	</select>
+	
+	
+	<select id="allListCount" parameterType="String" resultType="java.lang.String">
+		<![CDATA[
+			select 
+			count(*)
+		from standard_info 
+        ]]>
+	</select>
+	
+	<!-- 검색카운트 -->
+	<select id="searchedCount" parameterType="String" resultType="java.lang.String">
+		<![CDATA[
+			select 
+				count(recipe_name) 
+			from standard_info
+		     where recipe_name like '%'||#{recipe_name}||'%'
+		]]>
+		
+	</select>
+	
+	
+	
 	
 	<!-- 기본레시피정보 가져오기 -->
 	<select id="readContent_std" parameterType="String" resultType="com.javaex.vo.Std_info_Vo">
@@ -114,16 +130,7 @@
 		]]>
 	</select>
 	
-	<!-- 검색카운트 -->
-	<select id="searchedCount" parameterType="String" resultType="java.lang.String">
-		<![CDATA[
-			select 
-				count(recipe_name) 
-			from standard_info
-		     where recipe_name like '%'||#{recipe_name}||'%'
-		]]>
-		
-	</select>
+	
 	
 	
 
