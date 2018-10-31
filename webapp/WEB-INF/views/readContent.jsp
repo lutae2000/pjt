@@ -59,8 +59,8 @@
 <table>
 	<c:forEach items="${recipe.howtocookList }" var="htcl">
 	<tr>
-		<td>${htcl.how_to_cook }</td>
 		<td><img src="${htcl.how_to_cook_img }" width="200"></td>
+		<td>${htcl.how_to_cook }</td>
 	</tr>
 	
 	</c:forEach>

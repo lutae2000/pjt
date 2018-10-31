@@ -127,11 +127,8 @@
 			from howtocook
 			where recipe_code = #{recipe_code} 
 			order by how_to_cook_order asc
+			
 		]]>
 	</select>
-	
-	
-	
-	
 
 </mapper>

@@ -1,7 +1,6 @@
 package com.javaex.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,15 +60,30 @@ public class UserDao {
 	}
 	
 	//랜덤 추천
-	public  List<Std_info_Vo> recommandDao(String recommand) {
-		List<Std_info_Vo> recommandList = sqlsession.selectList("recommandation.recommandFoodType", recommand);
-//		System.out.println(recommandList.toString());
-		
-		
-		return recommandList;
+	public  List<Std_info_Vo> recommendDao(String recommend) {
+		List<Std_info_Vo> recommendList = sqlsession.selectList("recommendation.recommendFoodType", recommend);
+//		System.out.println(recommendList.toString());
+
+		return recommendList;
+	}
+	
+	//재료 선택 리스트
+	public List<IngreVo> selectIngre(String recipe_name){
+		List<IngreVo>  selectIngre = sqlsession.selectList("selectIngre.selectIngre", recipe_name);
+		System.out.println(selectIngre.toString());
+		return selectIngre;
+	}
+	
+	//레시피 선택시 히트+1
+	public int updateHit(String recipe_code) {
+		return sqlsession.update("recommendation.updateHit", recipe_code);
+	}
+	
+	//히트 높은 순서대로 3개 가져옴
+	public List<Std_info_Vo> selectHit(String selectHit){
+		return sqlsession.selectList("recommendation.selectHit",selectHit);
 	}
 	
 	
-	
-	
+
 }

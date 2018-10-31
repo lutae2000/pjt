@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,17 +32,23 @@ public class UserController {
 		model.addAttribute("recipe", recipe);
 		return "readContent";
 	}
+	
+	@RequestMapping("/selectIngre")
+	public String selectIngre() {
+		return "selectIngre";
+		
+	}
 
 	
 	
-	@RequestMapping(value="/list", method=RequestMethod.GET)
+/*	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String list(Model model) {
 		List<Std_info_Vo> allListMap = userService.getAllList();
 //		Map<String, Object> count = userService.
 		model.addAttribute("allList",allListMap);
 		System.out.println(allListMap.toString());
 		return "list"; 
-	}
+	}*/
 	
 	@RequestMapping(value="/list/search", method=RequestMethod.GET)
 	public String searchedList(@RequestParam(value="kwd", defaultValue="")String kwd, Model model) {
@@ -57,19 +64,22 @@ public class UserController {
 		return "list";
 	}
 	
-	@RequestMapping("/recommandPage")
-	public String recommandPage() {
-		return "recommand";
+	@RequestMapping(value="/recommend", method=RequestMethod.GET)
+	public String recommendPage(@RequestParam(value="", defaultValue="", required=false) String recommend,Model model) {
+		Map<String, Object> recommendMap = userService.getRecommend(recommend);
+		
+		model.addAttribute("recommendRecipe",recommendMap);
+		return "recommend";
 	}
 	
-	@RequestMapping(value="/recommand", method=RequestMethod.GET)
-	public String recommand(@RequestParam("foodType") String foodType, Model model) {
+/*	@RequestMapping(value="/recommend", method=RequestMethod.GET)
+	public String recommend(@RequestParam(value="foodType", defaultValue="") String foodType, Model model) {
 		System.out.println(foodType);
-		List<Std_info_Vo> recommandList = userService.getRecommand(foodType);
-		System.out.println(recommandList.toString());
-		model.addAttribute("recommandRecipe", recommandList);
-		return "recommand";
-	}
+		Map<String, Object> recommendMap = userService.getRecommend(foodType);
+		System.out.println(recommendMap.toString());
+		model.addAttribute("recommendRecipe", recommendMap);
+		return "recommend";
+	}*/
 
 
 }

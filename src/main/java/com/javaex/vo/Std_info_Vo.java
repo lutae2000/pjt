@@ -17,6 +17,7 @@ public class Std_info_Vo {
 	private String price_class;
 	private String img_url;
 	private String detail_url;
+	private String hit;
 	
 	public Std_info_Vo() {
 	}
@@ -55,6 +56,14 @@ public class Std_info_Vo {
 	}
 	
 	
+
+	public String getHit() {
+		return hit;
+	}
+
+	public void setHit(String hit) {
+		this.hit = hit;
+	}
 
 	public String getRecipe_code() {
 		return recipe_code;
@@ -234,26 +243,19 @@ public class Std_info_Vo {
 		this.detail_url = detail_url;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "std_info[recipe_code=" + recipe_code +
-				", recipe_name=" + recipe_name + 
-				", intro=" + intro + 
-				", food_type_code=" + food_type_code + 
-				", food_type=" + food_type +
-				", food_class_code" + food_class_code +
-				", food_class" + food_class +
-				", cooking_time" + cooking_time +
-				", kalo" + kalo +
-				", quantity" + quantity+
-				", difficult" + difficult +
-				", ingre_class" + ingre_class +
-				", price+class" + price_class +
-				", detail_url" + detail_url
-				+"]";
+		return "Std_info_Vo [recipe_code=" + recipe_code + ", recipe_name=" + recipe_name + ", intro=" + intro
+				+ ", food_type_code=" + food_type_code + ", food_type=" + food_type + ", food_class_code="
+				+ food_class_code + ", food_class=" + food_class + ", cooking_time=" + cooking_time + ", kalo=" + kalo
+				+ ", quantity=" + quantity + ", difficult=" + difficult + ", ingre_class=" + ingre_class
+				+ ", price_class=" + price_class + ", img_url=" + img_url + ", detail_url=" + detail_url + ", hit="
+				+ hit + "]";
 	}
+
+
+
+	
 	
 	
 }

@@ -5,6 +5,7 @@
     </typeAliases>	
 	<mappers>
 		<mapper resource="mybatis/mappers/user.xml" />
-		<mapper resource="mybatis/mappers/recommandation.xml" />
+		<mapper resource="mybatis/mappers/recommendation.xml" />
+		<mapper resource="mybatis/mappers/selectIngre.xml" />
 	</mappers>
 </configuration>
