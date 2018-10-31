@@ -84,6 +84,13 @@ public class UserDao {
 		return sqlsession.selectList("recommendation.selectHit",selectHit);
 	}
 	
+	public List<Std_info_Vo> readContentRecommend(String recommendFoodClass){
+		System.out.println("StartDao"+recommendFoodClass);
+		List<Std_info_Vo> recommendList = sqlsession.selectList("recommendation.associateMenu",recommendFoodClass);
+		System.out.println("dao"+recommendList.toString());
+		return recommendList;
+	}
+	
 	
 
 }

@@ -53,8 +53,11 @@ public class UserService {
 		Std_info_Vo std_info_Vo  = userDao.readContent_std(recipe_code);
 		List<IngreVo> ingreList =  userDao.readIngre_info(recipe_code);
 		List<HowtocookVo> howtocookList = userDao.readContent_howToCook(recipe_code);
+		List<Std_info_Vo> contentRecommend = userDao.readContentRecommend(std_info_Vo.getFood_class());
+		System.out.println(std_info_Vo.getFood_class());
 		int addHit = userDao.updateHit(recipe_code);
 		
+		recipe.put("contentRecommend", contentRecommend);
 		recipe.put("addHit", addHit);
 		recipe.put("std_info_Vo", std_info_Vo);
 		recipe.put("ingreList", ingreList);

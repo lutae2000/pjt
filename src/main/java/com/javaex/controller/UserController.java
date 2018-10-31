@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.javaex.service.UserService;
 import com.javaex.vo.Std_info_Vo;
 
+import oracle.net.aso.f;
+
 @Controller
 public class UserController {
 
@@ -65,7 +67,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/recommend", method=RequestMethod.GET)
-	public String recommendPage(@RequestParam(value="", defaultValue="", required=false) String recommend,Model model) {
+	public String recommendPage(@RequestParam(defaultValue="", required=false) String recommend,Model model) {
 		Map<String, Object> recommendMap = userService.getRecommend(recommend);
 		
 		model.addAttribute("recommendRecipe",recommendMap);

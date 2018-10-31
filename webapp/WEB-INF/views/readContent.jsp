@@ -23,7 +23,7 @@
 	<tr>
 		<td>
 			<c:forEach items="${recipe.ingreList}" var="vo">
-			${vo.ingre_name}
+			${vo.ingre_name}${vo.ingre_quantity },
 			</c:forEach>
 		</td>
 	</tr>
@@ -76,6 +76,13 @@
 		<td>${htc.tip }</td>
 	</tr>
 	</c:forEach>
-</table>			
+</table>
+
+<hr>
+
+<h3>연관검색</h3>
+<c:forEach items="${recipe.contentRecommend }" var="contentRecommend">
+	<a href="${pageContext.request.contextPath}/readContent?recipe_code=${contentRecommend.recipe_code}" ><img src="${contentRecommend.img_url }" width="200"></a>
+</c:forEach>
 </body>
 </html>
