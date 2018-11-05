@@ -100,7 +100,51 @@
 		]]>
 	</select>
 	
-	<!-- 재료리스트 가져오기 -->
+	<!-- 주재료리스트 가져오기 -->
+	<select id="readContentMain_ingre" parameterType="String" resultType="com.javaex.vo.IngreVo">
+		<![CDATA[
+			select 
+				 recipe_code
+				 ,INGRE_TURN
+				 ,INGRE_NAME
+				 ,INGRE_QUANTITY
+				 ,INGRE_TYPE_NAME 
+			from ingre_info
+			where recipe_code = #{recipe_code} and ingre_type_name = '주재료'
+		]]>
+		</select>
+		
+			<!-- 부재료리스트 가져오기 -->
+	<select id="readContentSub_ingre" parameterType="String" resultType="com.javaex.vo.IngreVo">
+		<![CDATA[
+			select 
+				 recipe_code
+				 ,INGRE_TURN
+				 ,INGRE_NAME
+				 ,INGRE_QUANTITY
+				 ,INGRE_TYPE_NAME 
+			from ingre_info
+			where recipe_code = #{recipe_code} and ingre_type_name='부재료'
+
+		]]>
+		</select>
+		
+			<!-- 양념 재료리스트 가져오기 -->
+	<select id="readContentSauce_ingre" parameterType="String" resultType="com.javaex.vo.IngreVo">
+		<![CDATA[
+			select 
+				 recipe_code
+				 ,INGRE_TURN
+				 ,INGRE_NAME
+				 ,INGRE_QUANTITY
+				 ,INGRE_TYPE_NAME 
+			from ingre_info
+			where recipe_code = #{recipe_code} and ingre_type_name='양념'
+
+		]]>
+		</select>
+		
+<!-- 			
 	<select id="readContent_ingre" parameterType="String" resultType="com.javaex.vo.IngreVo">
 		<![CDATA[
 			select 
@@ -109,11 +153,11 @@
 				 ,INGRE_NAME
 				 ,INGRE_QUANTITY
 				 ,INGRE_TYPE_NAME 
-				 ,INGRE_QUANTITY 
 			from ingre_info
 			where recipe_code = #{recipe_code}
+
 		]]>
-		</select>
+		</select> -->
 		
 	<!-- 요리순서 리스트 -->
 	<select id="readContent_howToCook" parameterType="String" resultType="com.javaex.vo.HowtocookVo">

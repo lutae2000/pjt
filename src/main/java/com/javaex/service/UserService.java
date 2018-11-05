@@ -51,16 +51,25 @@ public class UserService {
 		Map<String, Object> recipe = new HashMap<String, Object>();
 		
 		Std_info_Vo std_info_Vo  = userDao.readContent_std(recipe_code);
-		List<IngreVo> ingreList =  userDao.readIngre_info(recipe_code);
+/*		List<IngreVo> mainIngreList =  userDao.readIngre_info("주재료");
+		List<IngreVo> subIngreList = userDao.readIngre_info("부재료");
+		List<IngreVo> sauceIngreList = userDao.readIngre_info("양념");*/
+		
+		List<IngreVo> mainIngreList = userDao.readMainIngre_info(recipe_code);
+		List<IngreVo> subIngreList = userDao.readSubIngre_info(recipe_code);
+		List<IngreVo> sauceIngreList = userDao.readSauceIngre_info(recipe_code);
+		
 		List<HowtocookVo> howtocookList = userDao.readContent_howToCook(recipe_code);
 		List<Std_info_Vo> contentRecommend = userDao.readContentRecommend(std_info_Vo.getFood_class());
-		System.out.println(std_info_Vo.getFood_class());
+		System.out.println(mainIngreList);
 		int addHit = userDao.updateHit(recipe_code);
 		
 		recipe.put("contentRecommend", contentRecommend);
 		recipe.put("addHit", addHit);
 		recipe.put("std_info_Vo", std_info_Vo);
-		recipe.put("ingreList", ingreList);
+		recipe.put("mainIngreList", mainIngreList);
+		recipe.put("subIngreList", subIngreList);
+		recipe.put("sauceIngreList", sauceIngreList);
 		recipe.put("howtocookList", howtocookList);
 		
 		return recipe;

@@ -35,13 +35,28 @@ public class UserDao {
 		return readStdContent;
 	}
 	
-	//요리순서 리스트
+/*	//재료리스트 가져오기
 	public List<IngreVo> readIngre_info(String recipe_code){
 		List<IngreVo> readIngreInfoContentList = sqlsession.selectList("user.readContent_ingre", recipe_code);
 		return readIngreInfoContentList;
+	}*/
+	public List<IngreVo> readMainIngre_info(String recipe_code){
+		List<IngreVo> readMainIngreInfoContentList = sqlsession.selectList("user.readContentMain_ingre", recipe_code);
+		return readMainIngreInfoContentList;
 	}
 	
-	//재료리스트 가져오기
+	public List<IngreVo> readSubIngre_info(String recipe_code){
+		List<IngreVo> readSubIngreInfoContentList = sqlsession.selectList("user.readContentSub_ingre", recipe_code);
+		return readSubIngreInfoContentList;
+	}
+	
+	public List<IngreVo> readSauceIngre_info(String recipe_code){
+		List<IngreVo> readSauceIngreInfoContentList = sqlsession.selectList("user.readContentSauce_ingre", recipe_code);
+		return readSauceIngreInfoContentList;
+	}
+	
+	
+	//요리순서 리스트
 	public List<HowtocookVo> readContent_howToCook(String recipe_code){
 		List<HowtocookVo> readHTCContentList  = sqlsession.selectList("user.readContent_howToCook", recipe_code);
 		return readHTCContentList;
@@ -84,10 +99,11 @@ public class UserDao {
 		return sqlsession.selectList("recommendation.selectHit",selectHit);
 	}
 	
+	//readContent에서 관련 레시피 추천부분
 	public List<Std_info_Vo> readContentRecommend(String recommendFoodClass){
-		System.out.println("StartDao"+recommendFoodClass);
+//		System.out.println("StartDao"+recommendFoodClass);
 		List<Std_info_Vo> recommendList = sqlsession.selectList("recommendation.associateMenu",recommendFoodClass);
-		System.out.println("dao"+recommendList.toString());
+//		System.out.println("dao"+recommendList.toString());
 		return recommendList;
 	}
 	

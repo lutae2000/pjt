@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="selectIngre">
+	<select id="selectIngre" parameterType="String" resultType="com.javaex.vo.Std_info_Vo">
+		<![CDATA[
+			select s.recipe_code, s.recipe_name, s.img_url, i.ingre_name
+			from standard_info s, ingre_info i
+			where i.ingre_name in(#(recipe_name))
+		]]>
+	</select>
+	
+</mapper>

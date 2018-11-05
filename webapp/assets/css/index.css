@@ -212,14 +212,20 @@ html { -webkit-text-size-adjust: none; }
 
 
 
-.image{
-	position:relative;
+.img{
+	position: relative;
+	background-image: url();
+	background-size: cover;
 }
-.image.text{
-	position:absolute;
-	top:20px;
-	left:20px;
-	color:#FFF
+.img-cover{
+	position: absolute;
+	height:100%;
+	width:100%;
+}
+.img .content{
+	position: absolute;
+	color:white;
+	text-align: center;
 }
 
 .main_div.health .title{padding-top:50px}

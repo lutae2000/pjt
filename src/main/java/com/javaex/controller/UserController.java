@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import com.javaex.service.UserService;
+import com.javaex.vo.IngreSelect;
 import com.javaex.vo.Std_info_Vo;
 
 import oracle.net.aso.f;
@@ -26,9 +27,10 @@ public class UserController {
 	
 	@RequestMapping(value="/readContent", method=RequestMethod.GET)
 	public String readContent(@RequestParam("recipe_code") String recipe_code, Model model) {
-		System.out.println(recipe_code);
+//		System.out.println(recipe_code);
 		
 		Map<String, Object> recipe = userService.getContent(recipe_code);
+		System.out.println("===============");
 		System.out.println(recipe);
 		
 		model.addAttribute("recipe", recipe);
@@ -69,19 +71,14 @@ public class UserController {
 	@RequestMapping(value="/recommend", method=RequestMethod.GET)
 	public String recommendPage(@RequestParam(defaultValue="", required=false) String recommend,Model model) {
 		Map<String, Object> recommendMap = userService.getRecommend(recommend);
-		
 		model.addAttribute("recommendRecipe",recommendMap);
 		return "recommend";
 	}
 	
-/*	@RequestMapping(value="/recommend", method=RequestMethod.GET)
-	public String recommend(@RequestParam(value="foodType", defaultValue="") String foodType, Model model) {
-		System.out.println(foodType);
-		Map<String, Object> recommendMap = userService.getRecommend(foodType);
-		System.out.println(recommendMap.toString());
-		model.addAttribute("recommendRecipe", recommendMap);
+	@RequestMapping(value="/recipeResult", method=RequestMethod.POST)
+	public String recommend(@ModelAttribute IngreSelect ingreSelect, Model model) {
 		return "recommend";
-	}*/
+	}
 
 
 }

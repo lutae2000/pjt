@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <!DOCTYPE html>
 <html>
@@ -22,11 +23,34 @@
 	</tr>
 	<tr>
 		<td>
-			<c:forEach items="${recipe.ingreList}" var="vo">
-			${vo.ingre_name}${vo.ingre_quantity },
+			<b>주재료 : </b>
+			<c:forEach items="${recipe.mainIngreList}" var="vo">
+				${vo.ingre_name}${vo.ingre_quantity },
 			</c:forEach>
 		</td>
 	</tr>
+	<c:if test="${fn:length(recipe.subIngreList) >0 }">
+	<tr>
+		<td>
+			<b>부재료 : </b>
+			<c:forEach items="${recipe.subIngreList}" var="bo">
+				${bo.ingre_name}${bo.ingre_quantity },
+			</c:forEach>
+
+		</td>
+	</tr>
+	</c:if>
+	<c:if test="${fn:length(recipe.sauceIngreList)>0}" > 
+	<tr>
+		<td>
+		
+			<b>양념 : </b>
+			<c:forEach items="${recipe.sauceIngreList}" var="co">
+				${co.ingre_name}${co.ingre_quantity },
+			</c:forEach>
+		</td>	
+	</tr>
+	</c:if>
 </table>
 
 <hr>
@@ -69,6 +93,8 @@
 </table>
 
 <hr>
+
+
 <h4>조리 팁</h4>
 <table>
 <c:forEach items="${recipe.howtocookList }" var="htc">
@@ -77,12 +103,13 @@
 	</tr>
 	</c:forEach>
 </table>
+<%-- </c:if> --%>
 
 <hr>
 
 <h3>연관검색</h3>
 <c:forEach items="${recipe.contentRecommend }" var="contentRecommend">
-	<a href="${pageContext.request.contextPath}/readContent?recipe_code=${contentRecommend.recipe_code}" ><img src="${contentRecommend.img_url }" width="200"></a>
+	<a href="${pageContext.request.contextPath}/readContent?recipe_code=${contentRecommend.recipe_code}" ><img src="${contentRecommend.img_url }"width="200"></a>
 </c:forEach>
 </body>
 </html>

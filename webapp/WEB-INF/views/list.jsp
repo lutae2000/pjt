@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <!DOCTYPE html>
 <html>
@@ -70,20 +70,26 @@
     	<input type="submit" value="검색">
     </form>
     
-    
+
  	<table>
 	<c:forEach items="${searchedList.std_info_List}" var="vo">
 		<tr>
+			
 			<td>${vo.recipe_name }</td>
 			
 			 <td>
-			 	<a href="${pageContext.request.contextPath}/readContent?recipe_code=${vo.recipe_code }"><img src="${vo.img_url}" width="300"></a>
+			 
+			 	<a href="${pageContext.request.contextPath}/readContent?recipe_code=${vo.recipe_code }">
+			 		<img src="${vo.img_url}" width="300">
+			 	</a>
+			 
 			 </td> 
 			 
 		</tr>
 	</c:forEach>
+	
 	</table>
-    
+
     
 	<div id="tabCon01"></div>
     <!-- <p class="title">요리 테이블 목록</p> -->
@@ -105,16 +111,7 @@
 </div>
 
 
-<div class="menu_wrap" id="bottom">
-    <div class="menu">
-        <ul>
-            <li class="mycenter"><a href="#">요리선택</a></li>
-            <li class="center on"><a href="#">재료선택</a></li>
-            <li class="health "><a href="#">맛집추천</a></li>
-            <li class="help"><a href="#">쇼핑몰이동</a></li>
-        </ul>
-    </div>
-</div>
+
 
 
 	

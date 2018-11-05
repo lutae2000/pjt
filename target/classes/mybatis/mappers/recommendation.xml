@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="recommendation">
+
+	<!-- 한식 랜덤검색 -->
+	<select id="recommendFoodType" parameterType="String" resultType="com.javaex.vo.Std_info_Vo">
+		<![CDATA[
+			select recipe_code
+		  		,recipe_name
+		  		,intro
+		  		,food_type_code
+		  		,food_type
+		  		,food_class_code
+		  		,food_class
+		  		,cooking_time
+		  		,kalo
+		  		,quantity
+		  		,difficult
+		  		,ingre_class
+		  		,price_class
+		  		,img_url
+		  		,detail_url 
+		  	from (select recipe_code
+				  		,recipe_name
+				  		,intro
+				  		,food_type_code
+				  		,food_type
+				  		,food_class_code
+				  		,food_class
+				  		,cooking_time
+				  		,kalo
+				  		,quantity
+				  		,difficult
+				  		,ingre_class
+				  		,price_class
+				  		,img_url
+				  		,detail_url 
+		  			from standard_info 
+		  			where food_type=#{food_type} 
+		  			order by dbms_random.value ) 
+		  	where rownum <=3
+		]]>
+	</select>
+	
+	
+	<update id="updateHit" parameterType="String">
+		<![CDATA[
+			update standard_info
+			set hit = hit+1
+			where recipe_code = #{recipe_code}
+			]]>
+	</update>
+	
+	<select id="selectHit" parameterType="String" resultType="com.javaex.vo.Std_info_Vo">
+		<![CDATA[
+			select recipe_code
+		  		,recipe_name
+		  		,food_type
+		  		,food_class
+		  		,img_url
+		  		,hit
+		  		from (
+		  			select recipe_code
+			  		,recipe_name
+			  		,food_type
+			  		,food_class
+			  		,img_url
+			  		,hit
+			  		from standard_info
+			  		where food_type = #{food_type}
+			  		order by hit desc
+			  		)
+			  	where rownum <= 3
+		]]>
+	</select>
+	
+	<select id="associateMenu" parameterType="String" resultType="com.javaex.vo.Std_info_Vo">
+		<![CDATA[
+			select recipe_code
+			,recipe_name
+			,food_class
+			,img_url 
+			from(select recipe_code
+				,recipe_name
+				,food_class
+				,img_url 
+				from standard_info
+				where food_class = #{food_class}
+				order by hit desc
+				)
+				where rownum<=3
+				
+		]]>
+	</select>
+	
+		
+</mapper>
