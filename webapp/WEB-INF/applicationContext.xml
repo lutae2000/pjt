@@ -29,7 +29,7 @@
 	<!-- oracle datasource -->
 	<bean id="oracleDatasource" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
 		<property name="URL" value="jdbc:oracle:thin:@localhost:1521:orcl" />
-		<property name="user" value="C##root" />
+		<property name="user" value="c##root" />
 		<property name="password" value="adminadmin" />
 		<property name="connectionCachingEnabled" value="true" />
 		<qualifier value="main-db" />

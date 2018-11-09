@@ -54,7 +54,7 @@
 	</select>
 	
 	
-	<select id="allListCount" parameterType="String" resultType="java.lang.String">
+	<select id="allListCount" parameterType="String" resultType="java.lang.Integer">
 		<![CDATA[
 			select 
 			count(*)
@@ -62,8 +62,10 @@
         ]]>
 	</select>
 	
+
+	
 	<!-- 검색카운트 -->
-	<select id="searchedCount" parameterType="String" resultType="java.lang.String">
+	<select id="searchedCount" parameterType="String" resultType="java.lang.Integer">
 		<![CDATA[
 			select 
 				count(recipe_name) 

@@ -12,30 +12,34 @@ import com.javaex.vo.HowtocookVo;
 import com.javaex.vo.IngreVo;
 import com.javaex.vo.Std_info_Vo;
 
+
 @Service
 public class UserService {
 	
 	@Autowired
 	UserDao userDao;
 	
-	public List<Std_info_Vo> getAllList(){
+/*	public List<Std_info_Vo> getAllList(){
 		Map<String, Object> allListMap = new HashMap<String, Object>();
 		List<Std_info_Vo> allList = userDao.getAllList();
-		String totalCount = userDao.totalCount("");
-		String searchedCount = userDao.searchedCount("");
+		int totalCount = userDao.totalCount("");
+		int searchedCount = userDao.searchedCount("");
 		
 		allListMap.put("allList", allList);
 		allListMap.put("totalCount", totalCount);
 		allListMap.put("searchCount", searchedCount);
 		return allList;
-	}
+	}*/
 	
 	
 	public Map<String, Object> getSearchMap(String searchKwd){
 		Map<String, Object> searchedResult = new HashMap<String, Object>();
 		List<Std_info_Vo> std_info_List = userDao.searchedList(searchKwd);
-		String searchedCount = userDao.searchedCount(searchKwd);
-		String totalCount = userDao.totalCount(searchKwd);
+		int totalCount = userDao.totalCount(searchKwd);
+		int searchedCount = userDao.searchedCount(searchKwd);
+		
+		/*int searchedCount = userDao.searchedCount(searchKwd);*/
+		
 //		List<Std_info_Vo> allList = userDao.getAllList();
 		
 		searchedResult.put("searchedCount", searchedCount);
@@ -100,7 +104,7 @@ public class UserService {
 			recommend.put(arg0, arg1)
 		}*/
 
-		int addHit = userDao.updateHit(recipe);
+
 		
 		
 		recommend.put("korRankingList", korRankingList);
@@ -121,32 +125,23 @@ public class UserService {
 		
 		/*System.out.println(chnRankingList);*/
 
-		recommend.put("addHit", addHit);
+
 
 
 //		System.out.println(recommandList.toString());
 		return recommend;
 	}
-	
-/*	public Map<String, Object> getSelect(String ingre){
-		Map<String, Object> select_ingre = new HashMap<String, Object>();
-		
-		List<IngreVo> ingre_list = userDao.selectIngre(ingre);
-		List<Std_info_Vo> std_info_Vo = userDao.getAllList();
-		List<Std_info_Vo> hitList=userDao.selectHit();
-		
-//		String totalCount = userDao.totalCount(ingre);
-//		String searchedCount = userDao.searchedCount(ingre);
-		
-		select_ingre.put("hitList", hitList);
-		select_ingre.put("ingre_list", ingre_list);
-		select_ingre.put("std_info", std_info_Vo);
-		
-		
-//		select_ingre.put("totalCount", totalCount);
-//		select_ingre.put("searchedCount", searchedCount);
-		return select_ingre;
-		
-	}*/
+
+	public Map<String,Object> getSelectedIngreResult(List<String> selectedIngresList){
+		Map<String, Object> ingreMap = new HashMap<String, Object>();
+		List<Std_info_Vo> ingreList = userDao.selectIngre(selectedIngresList);
+		int totalCount = userDao.totalCount("");
+		int searchedCount = userDao.ingreResultSearchedCount(selectedIngresList);
+		ingreMap.put("std_info_List", ingreList);
+		ingreMap.put("totalCount", totalCount);
+		ingreMap.put("searchCount", searchedCount);
+			
+		return ingreMap;
+	}
 
 }

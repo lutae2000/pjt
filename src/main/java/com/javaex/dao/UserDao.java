@@ -45,11 +45,13 @@ public class UserDao {
 		return readMainIngreInfoContentList;
 	}
 	
+	//readContent 부재료부분 출력
 	public List<IngreVo> readSubIngre_info(String recipe_code){
 		List<IngreVo> readSubIngreInfoContentList = sqlsession.selectList("user.readContentSub_ingre", recipe_code);
 		return readSubIngreInfoContentList;
 	}
 	
+	//readContent 양념부분 출력
 	public List<IngreVo> readSauceIngre_info(String recipe_code){
 		List<IngreVo> readSauceIngreInfoContentList = sqlsession.selectList("user.readContentSauce_ingre", recipe_code);
 		return readSauceIngreInfoContentList;
@@ -63,13 +65,13 @@ public class UserDao {
 	}
 	
 	//메뉴 검색된 갯수
-	public String searchedCount(String searchedcount) {
-		System.out.println(searchedcount);
-		return sqlsession.selectOne("user.searchedCount",searchedcount);
+	public int searchedCount(String kwd) {
+		System.out.println(kwd);
+		return sqlsession.selectOne("user.searchedCount",kwd);
 	}
 	
 	//메뉴 총 갯수
-	public String totalCount(String totalCount) {
+	public int totalCount(String totalCount) {
 		System.out.println(totalCount.toString());
 		return sqlsession.selectOne("user.allListCount", totalCount);
 	}
@@ -83,9 +85,12 @@ public class UserDao {
 	}
 	
 	//재료 선택 리스트
-	public List<IngreVo> selectIngre(String recipe_name){
-		List<IngreVo>  selectIngre = sqlsession.selectList("selectIngre.selectIngre", recipe_name);
-		System.out.println(selectIngre.toString());
+	public List<Std_info_Vo> selectIngre(List<String> selectedIngresList){
+		System.out.println("dao:"+selectedIngresList);
+		System.out.println("dao:"+selectedIngresList.size());
+		List<Std_info_Vo>  selectIngre = sqlsession.selectList("selectIngre.selectIngre", selectedIngresList);
+		System.out.println("===================");
+		System.out.println(selectIngre);
 		return selectIngre;
 	}
 	
@@ -106,6 +111,15 @@ public class UserDao {
 //		System.out.println("dao"+recommendList.toString());
 		return recommendList;
 	}
+	
+	//재료선택해서 나온 결과 레시피 카운트
+	public int ingreResultSearchedCount (List<String> ingreList){
+		int ingreListResult = sqlsession.selectOne("selectIngre.ingreResultSearchedCount",ingreList);
+		System.out.println(ingreListResult);
+		return ingreListResult;
+	}
+	
+	
 	
 	
 

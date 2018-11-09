@@ -66,7 +66,7 @@ html { -webkit-text-size-adjust: none; }
 
 
 /*로그인/로그아웃*/
-.login_wrap{min-width:300px;min-height:450px;width:100%;margin:0 auto;background:#f4f4f4;}
+.login_wrap{min-width:300px;min-height:450px;width:100%;margin:0 auto;background:#fff6af;}
 .login_wrap:after{display:block;content:'';clear:both;}
 
 .login_wrap #login{width:100%;padding-top:65px;padding-bottom:30px;position: relative}
@@ -94,6 +94,33 @@ html { -webkit-text-size-adjust: none; }
 .login_wrap .login_div .logout{width:65px}
 .login_wrap .login_div .logout_txt{font-size:15px;margin-bottom:20px}
 .login_wrap .login_div .logout_txt strong{font-size:15px;}
+
+/*메인 페이지*/
+.main_wrap{min-width:300px;min-height:600px;width:100%;margin:0 auto;background:#fff6af;}
+.main_wrap:after{display:block;content:'';clear:both;}
+
+.main_wrap #main{width:100%;padding-top: 40px;padding-bottom:30px;position: relative;}
+.main_wrap #logout{position:absolute;top:50%;margin-top:-150px;width:100%}
+
+.main_wrap .wrap_div{margin: 0px 15px;text-align:center;position:relative;} 
+.main_wrap .wrap_div .logo{width:138px}
+.main_wrap .wrap_div:after{display:block;content:'';clear:both;}
+.main_wrap .wrap_div .main_input{margin:0 auto;margin-top:40px;max-width:350px; background:#fff6af; opacity: 0.9;}
+.main_wrap .wrap_div .main_input input{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;width:100%;padding:0px 5px;height:50px;border:1px solid #dddddd;box-sizing:border-box;background:#fff;font-size:15px;color:#888;margin:2px 0px}
+.main_wrap .wrap_div .main_input .btn{margin-top:17px}
+.main_wrap .wrap_div .main_input button.main{margin-top: 5px;font-size:18px;font-weight:bold;width:100%;height: 100px;line-height: 100px;background:#03b7c0;text-align: center;color:#fff;}
+
+
+.main_wrap .wrap_div .main_input button.btn{font-size:15px;color:#333333;height:50px;line-height:50px;float:left;background:none;text-align:center;width:49%}
+.main_wrap .wrap_div .main_input button.left{margin-right:2%}
+.main_wrap .wrap_div .main_input button.gray{background:#888888;}
+.main_wrap .wrap_div .main_input button.mint{background:#03b7c0;}
+.main_wrap .wrap_div .main_input button.btn span{font-size:15px;color:#333333;background:url('../images/login/bg_login_btn.png') left center no-repeat;background-size:6px;padding-left:14px; display:inline-block}
+.main_wrap p.copyrightcook{position:absolute;margin-top: 40px;width:100%;text-align:center;font-size: 14px;color:#999;}
+.main_wrap p.copyrightcook span{color:#03b7c0;font-size:12px;}
+.main_wrap .wrap_div .logout{width:65px}
+.main_wrap .wrap_div .logout_txt{font-size:15px;margin-bottom:20px}
+.main_wrap .wrap_div .logout_txt strong{font-size:15px;}
 
 /*메인*/
 .wrap{min-width:300px;width:100%;margin:0 auto;position:relative;padding-bottom:70px}
@@ -210,23 +237,6 @@ html { -webkit-text-size-adjust: none; }
 .main_div .info_div .no span{color:#666666;font-size:15px}
 .main_div .info_div .no .no_title{position:absolute;top:-20px;letter-spacing:-1px;color:#dfa800;font-size:15px}
 
-
-
-.img{
-	position: relative;
-	background-image: url();
-	background-size: cover;
-}
-.img-cover{
-	position: absolute;
-	height:100%;
-	width:100%;
-}
-.img .content{
-	position: absolute;
-	color:white;
-	text-align: center;
-}
 
 .main_div.health .title{padding-top:50px}
 
@@ -650,7 +660,7 @@ html { -webkit-text-size-adjust: none; }
 .user_info .tel{color:#fff; font-size:15px;text-align: center;opacity: 0.5;margin-top:5px}
 
 .mypage_menu{margin: 15px;/* border-top: 1px solid #e9e9e9; */background:#fff;}
-.mypage_menu li {float:left;width: 50%;text-align: center;border: 12px solid #e9e9e9;/* border-left: 15px solid #e9e9e9; */box-sizing:border-box;height:120px;position:relative;}
+.mypage_menu li {float:left;width: 50%;text-align: center;/* border-left: 15px solid #e9e9e9; */box-sizing:border-box;height:120px;position:relative;}
 .mypage_menu li img{width:100%;max-width:200px}
 .mypage_menu li:nth-child(2n){/* border-right:1px solid #e9e9e9 */}
 .mypage_menu:after{display:block;content:'';clear:both;}
@@ -667,7 +677,7 @@ html { -webkit-text-size-adjust: none; }
 .mypage_menu_sub li.menu_sub03{}
 .mypage_menu_sub li.menu_sub04{}
 
-.mypage_menu li a{display: block;padding-top:72px;box-shadow: border-box;font-size:15px;color:#333333;}
+.mypage_menu li a{display: block;margin-top: 96px;box-shadow: border-box;font-size:15px;font-weight: 800;background: black;color: #fff;opacity: 0.6;height: 20%;}
 .mypage_menu li .btn_div .img{display:block;float:left;width: 50px;height: 25px;background:#03b7c0 url(../images/icon_call.png) center center no-repeat;background-size:25px;border-radius: 25px;box-sizing: border-box;text-indent:-999px;overflow:hidden;}
 .mypage_menu li .btn_div{width:90%;position: absolute;height:50px;top:50%;margin-top:-13px;right:15px}
 

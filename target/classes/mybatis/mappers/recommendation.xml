@@ -87,9 +87,9 @@
 				,img_url 
 				from standard_info
 				where food_class = #{food_class}
-				order by hit desc
+				order by dbms_random.value
 				)
-				where rownum<=3
+				where rownum<=4
 				
 		]]>
 	</select>

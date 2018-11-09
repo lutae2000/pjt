@@ -6,17 +6,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import com.javaex.service.UserService;
-import com.javaex.vo.IngreSelect;
-import com.javaex.vo.Std_info_Vo;
-
-import oracle.net.aso.f;
 
 @Controller
 public class UserController {
@@ -41,6 +35,15 @@ public class UserController {
 	public String selectIngre() {
 		return "selectIngre";
 		
+	}
+	
+	@RequestMapping("/recipeResult")
+	public String selectedResult(@RequestParam("ingreInfo") List<String> selectedIngresList, Model model) {
+		System.out.println(selectedIngresList.get(0));
+		Map<String, Object> selectedIngreResultMap = userService.getSelectedIngreResult(selectedIngresList);
+		
+		model.addAttribute("selectedIngreResultMap",selectedIngreResultMap);
+		return "ingreResult";
 	}
 
 	
@@ -71,14 +74,15 @@ public class UserController {
 	@RequestMapping(value="/recommend", method=RequestMethod.GET)
 	public String recommendPage(@RequestParam(defaultValue="", required=false) String recommend,Model model) {
 		Map<String, Object> recommendMap = userService.getRecommend(recommend);
+		
 		model.addAttribute("recommendRecipe",recommendMap);
 		return "recommend";
 	}
 	
-	@RequestMapping(value="/recipeResult", method=RequestMethod.POST)
+/*	@RequestMapping(value="/recipeResult", method=RequestMethod.POST)
 	public String recommend(@ModelAttribute IngreSelect ingreSelect, Model model) {
 		return "recommend";
-	}
+	}*/
 
 
 }

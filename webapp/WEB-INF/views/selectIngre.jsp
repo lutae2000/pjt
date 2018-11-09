@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form class="ingreSelect" method="post" action="${pageContext.request.contextPath }/recipeResult">
+<form class="ingreSelect" method="get" action="${pageContext.request.contextPath }/recipeResult">
 	
 	<b>고기류</b><br>
 	<input type="checkbox" name="ingreInfo" value="쇠고기">쇠고기
