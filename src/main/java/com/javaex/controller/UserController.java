@@ -39,9 +39,7 @@ public class UserController {
 	
 	@RequestMapping("/recipeResult")
 	public String selectedResult(@RequestParam("ingreInfo") List<String> selectedIngresList, Model model) {
-		System.out.println(selectedIngresList.get(0));
 		Map<String, Object> selectedIngreResultMap = userService.getSelectedIngreResult(selectedIngresList);
-		
 		model.addAttribute("selectedIngreResultMap",selectedIngreResultMap);
 		return "ingreResult";
 	}

@@ -134,13 +134,19 @@ public class UserService {
 
 	public Map<String,Object> getSelectedIngreResult(List<String> selectedIngresList){
 		Map<String, Object> ingreMap = new HashMap<String, Object>();
+//		Map<String,Object> ingreList = userDao.selectIngre(selectedIngresList);
 		List<Std_info_Vo> ingreList = userDao.selectIngre(selectedIngresList);
+		
+			
 		int totalCount = userDao.totalCount("");
 		int searchedCount = userDao.ingreResultSearchedCount(selectedIngresList);
+		
 		ingreMap.put("std_info_List", ingreList);
 		ingreMap.put("totalCount", totalCount);
 		ingreMap.put("searchCount", searchedCount);
 			
+		
+		
 		return ingreMap;
 	}
 

@@ -1,6 +1,7 @@
 package com.javaex.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,15 +85,32 @@ public class UserDao {
 		return recommendList;
 	}
 	
+	
 	//재료 선택 리스트
-	public List<Std_info_Vo> selectIngre(List<String> selectedIngresList){
+		public List<Std_info_Vo> selectIngre(List<String> selectedIngresList){
+			System.out.println("dao:"+selectedIngresList);
+			System.out.println("dao:"+selectedIngresList.size());
+			List<Std_info_Vo>  selectIngre = sqlsession.selectList("selectIngre.selectIngre", selectedIngresList);
+//			int selectedIngreListCount = (selectIngre.size());
+//			selectIngre.put("selectedIngreListCount", selectedIngreListCount);
+			
+			System.out.println("===================");
+			System.out.println(selectIngre);
+			return selectIngre;
+		}
+	
+	/*//재료 선택 리스트
+	public Map<String,Object> selectIngre(List<String> selectedIngresList){
 		System.out.println("dao:"+selectedIngresList);
 		System.out.println("dao:"+selectedIngresList.size());
-		List<Std_info_Vo>  selectIngre = sqlsession.selectList("selectIngre.selectIngre", selectedIngresList);
+		Map<String,Object>  selectIngre = sqlsession.selectMap("selectIngre.selectIngre", selectedIngresList, "selectedIngreMap");
+		int selectedIngreListCount = (selectIngre.size());
+		selectIngre.put("selectedIngreListCount", selectedIngreListCount);
+		
 		System.out.println("===================");
 		System.out.println(selectIngre);
 		return selectIngre;
-	}
+	}*/
 	
 	//레시피 선택시 히트+1
 	public int updateHit(String recipe_code) {

@@ -4,10 +4,15 @@
 <mapper namespace="selectIngre">
 	<select id="selectIngre" parameterType="java.util.List" resultType="com.javaex.vo.Std_info_Vo">
 		<![CDATA[
-			select distinct s.recipe_code, s.recipe_name, s.img_url, i.ingre_name
-			from standard_info s, ingre_info i
-			where s.recipe_code = i.recipe_code 
-			and i.ingre_name in
+			select tb1_a.recipe_code, tb1_a.recipe_name, tb1_a.img_url
+			from standard_info tb1_a,
+			     (select b.recipe_code
+			     from
+			        (select count(a.recipe_code) cnt, a.recipe_code
+			         from
+			             (select recipe_code
+			              from ingre_info 
+			             where ingre_name in
 		]]>
 			<foreach item="ingre_name" index="index" collection="list"
 				open="(" separator="," close=")">
@@ -15,25 +20,71 @@
 				#{ingre_name}
 				]]>
 			</foreach>
-			
-		
-			
+			<![CDATA[
+							) a
+							group by a.recipe_code) b
+						where b.cnt >= 2) tbl_b
+					where tb1_a.recipe_code = tbl_b.recipe_code
+				
+			]]>
 	</select>
+	
+	
+	
+<!-- 	<select id="selectIngre" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			select tb1_a.recipe_code, tb1_a.recipe_name, tb1_a.img_url
+			from standard_info tb1_a,
+			     (select b.recipe_code
+			     from
+			        (select count(a.recipe_code) cnt, a.recipe_code
+			         from
+			             (select recipe_code
+			              from ingre_info 
+			             where ingre_name in
+		]]>
+			<foreach item="ingre_name" index="index" collection="list"
+				open="(" separator="," close=")">
+				<![CDATA[
+				#{ingre_name}
+				]]>
+			</foreach>
+			<![CDATA[
+							) a
+							group by a.recipe_code) b
+						where b.cnt >= 2) tbl_b
+					where tb1_a.recipe_code = tbl_b.recipe_code
+				
+			]]>
+	</select> -->
 	
 	
 	<select id="ingreResultSearchedCount" parameterType="java.util.List" resultType="java.lang.Integer">
 		<![CDATA[
-			select count(s.recipe_name)
-			from standard_info s, ingre_info i
-			where s.recipe_code = i.recipe_code
-			and i.ingre_name in
-		]]>
-			<foreach item="ingre_name" index="index" collection="list"
-				open="(" separator="," close=")">
+			select count(recipe_code) from(
+			select tbl_a.recipe_code, tbl_a.recipe_name
+			from standard_info tbl_a,
+			     (select b.recipe_code
+			     from
+			        (select count(a.recipe_code) cnt, a.recipe_code
+			         from
+			             (select recipe_code
+			              from ingre_info 
+			             where ingre_name in
+			]]>
+				<foreach item="ingre_name" index="index" collection="list"
+					open="(" separator="," close=")">
+					<![CDATA[
+					#{ingre_name}
+					]]>
+				</foreach>
 				<![CDATA[
-				#{ingre_name}
-				]]>
-			</foreach>
+								) a
+								group by a.recipe_code) b
+					     where b.cnt = 2) tbl_b
+					where tbl_a.recipe_code =  tbl_b.recipe_code
+				)
+			]]>
 	</select>
 	
 	
