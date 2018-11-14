@@ -37,9 +37,9 @@
 <body>
 <div class="header_wrap" id="top">
     <div class="header">
-        <h1 class="logo"><a href="./main.html"><img src="./images/logo.png" alt="피트모아"></a></h1>
-        <span class="menu"><a href="javascript:fn_back();"><img src="./images/menu.png" alt="메뉴"></a></span>
-        <span class="mypage"><a href="./sub102.html"><img src="./images/mypage.png" alt="마이페이지"></a></span>
+        <h1 class="logo"><a href="${pageContext.request.contextPath}/main.html"><img src="${pageContext.request.contextPath}/images/logo.png" alt="피트모아"></a></h1>
+        <span class="menu"><a href="javascript:fn_back();"><img src="${pageContext.request.contextPath}/images/menu.png" alt="메뉴"></a></span>
+        <span class="mypage"><a href="./sub102.html"><img src="${pageContext.request.contextPath}/images/mypage.png" alt="마이페이지"></a></span>
     </div>
 </div>
 
@@ -65,7 +65,7 @@
     </div>
     
     
-      <form id="search" action="${pageContext.request.contextPath }/list/search" method="get">
+     <form id="search" action="${pageContext.request.contextPath }/list/search" method="get">
     	<input type="text" id="kwd" name="kwd" placeholder="메뉴 검색">
     	<input type="submit" value="검색">
     </form>

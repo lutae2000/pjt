@@ -1,5 +1,6 @@
 package com.javaex.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -86,7 +87,7 @@ public class UserDao {
 	}
 	
 	
-	//재료 선택 리스트
+/*	//재료 선택 리스트
 		public List<Std_info_Vo> selectIngre(List<String> selectedIngresList){
 			System.out.println("dao:"+selectedIngresList);
 			System.out.println("dao:"+selectedIngresList.size());
@@ -97,20 +98,23 @@ public class UserDao {
 			System.out.println("===================");
 			System.out.println(selectIngre);
 			return selectIngre;
-		}
+		}*/
 	
-	/*//재료 선택 리스트
-	public Map<String,Object> selectIngre(List<String> selectedIngresList){
+	//재료 선택 리스트
+	public List<Std_info_Vo> selectIngre(List<String> selectedIngresList){
 		System.out.println("dao:"+selectedIngresList);
 		System.out.println("dao:"+selectedIngresList.size());
-		Map<String,Object>  selectIngre = sqlsession.selectMap("selectIngre.selectIngre", selectedIngresList, "selectedIngreMap");
-		int selectedIngreListCount = (selectIngre.size());
-		selectIngre.put("selectedIngreListCount", selectedIngreListCount);
+		
+		Map<String, Object> ingreMap = new HashMap<String, Object>();
+		ingreMap.put("count", selectedIngresList.size()/2);
+		ingreMap.put("iList", selectedIngresList);
+		
+		List<Std_info_Vo> igreList = sqlsession.selectList("selectIngre.selectIngre", ingreMap);
 		
 		System.out.println("===================");
-		System.out.println(selectIngre);
-		return selectIngre;
-	}*/
+		System.out.println(igreList);
+		return igreList;
+	}
 	
 	//레시피 선택시 히트+1
 	public int updateHit(String recipe_code) {
@@ -132,7 +136,13 @@ public class UserDao {
 	
 	//재료선택해서 나온 결과 레시피 카운트
 	public int ingreResultSearchedCount (List<String> ingreList){
-		int ingreListResult = sqlsession.selectOne("selectIngre.ingreResultSearchedCount",ingreList);
+		
+		
+		Map<String, Object> ingreMap = new HashMap<String, Object>();
+		ingreMap.put("count", ingreList.size()/2);
+		ingreMap.put("iList", ingreList);
+		
+		int ingreListResult = sqlsession.selectOne("selectIngre.ingreResultSearchedCount",ingreMap);
 		System.out.println(ingreListResult);
 		return ingreListResult;
 	}

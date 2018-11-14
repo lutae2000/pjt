@@ -18,6 +18,10 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
+	@RequestMapping("/main")
+	public String mainPage() {
+		return "main";
+	}
 	
 	@RequestMapping(value="/readContent", method=RequestMethod.GET)
 	public String readContent(@RequestParam("recipe_code") String recipe_code, Model model) {
@@ -76,6 +80,8 @@ public class UserController {
 		model.addAttribute("recommendRecipe",recommendMap);
 		return "recommend";
 	}
+	
+	
 	
 /*	@RequestMapping(value="/recipeResult", method=RequestMethod.POST)
 	public String recommend(@ModelAttribute IngreSelect ingreSelect, Model model) {
