@@ -18,6 +18,11 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
+	@RequestMapping("/index")
+	public String showIndex(){
+		return "index";
+	}
+	
 	@RequestMapping("/main")
 	public String mainPage() {
 		return "main";
@@ -46,6 +51,11 @@ public class UserController {
 		Map<String, Object> selectedIngreResultMap = userService.getSelectedIngreResult(selectedIngresList);
 		model.addAttribute("selectedIngreResultMap",selectedIngreResultMap);
 		return "ingreResult";
+	}
+	
+	@RequestMapping("/recipeSearchedResult")
+	public String recipeSearchedResult() {
+		return "";
 	}
 
 	
@@ -79,6 +89,11 @@ public class UserController {
 		
 		model.addAttribute("recommendRecipe",recommendMap);
 		return "recommend";
+	}
+	
+	@RequestMapping("/test")
+	public String testpage() {
+		return "test";
 	}
 	
 	
