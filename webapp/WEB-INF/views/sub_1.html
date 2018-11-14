@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width" />
+<title>피트모아</title>
+<link rel="stylesheet" href="./css/index.css" type="text/css" />
+<script type="text/javascript" src="./js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="./js/libs/jquery/jquery.js"></script>
+<script type="text/javascript" src="./js/libs/jquery/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="./js/libs/instance/instance.ui.js"></script>
+<script type="text/javascript" src="./js/ui/view.js"></script>
+<script type="text/javascript" src="./js/mcore.min.js"></script>
+<script type="text/javaScript" language="javascript">
+
+</script>
+<style>
+.mypage_menu{margin: 15px;/* border-top: 1px solid #e9e9e9; */background:#fff;}
+.mypage_menu li img{width:100%;max-width:200px}
+.mypage_menu li:nth-child(2n){/* border-right:1px solid #e9e9e9 */}
+.mypage_menu:after{display:block;content:'';clear:both;}
+
+/* .mypage_menu li.menu01{background:url(../images/icon_mypage_menu01.png) center 20px no-repeat;background-size:50px;}
+.mypage_menu li.menu02{background:url(../images/icon_mypage_menu02.png) center 20px no-repeat;background-size:50px;}
+.mypage_menu li.menu03{background:url(../images/icon_mypage_menu03.png) center 20px no-repeat;background-size:50px;}
+.mypage_menu li.menu04{background:url(../images/icon_mypage_menu04.png) center 20px no-repeat;background-size:50px;} */
+
+</style>
+</head>
+<body>
+<div class="header_wrap" id="top">
+    <div class="header">
+        <h1 class="logo"><a href="./main.html"><img src="./images/logo.png" alt="피트모아"></a></h1>
+        <span class="menu"><a href="javascript:fn_back();"><img src="./images/menu.png" alt="메뉴"></a></span>
+        <span class="mypage"><a href="./sub102.html"><img src="./images/mypage.png" alt="마이페이지"></a></span>
+    </div>
+</div>
+
+<div class="wrap" >
+    <form id="board-form" name="board-form" action="cook.mainList" >
+        <input type="hidden" id="page" name="page" value="1" placeholder="" readonly required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        <input type="hidden" id="totalCount" name="totalCount" value="0" placeholder="" readonly required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        <input type="hidden" id="pageBlock_Og" name="pageBlock_Og" value="6" placeholder="" readonly required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        <input type="hidden" id="pageBlock" name="pageBlock" value="6" placeholder="" readonly required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        <input type="hidden" id="TAB_TYPE" name="TAB_TYPE" value="tab01" placeholder="" readonly required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        <input type="hidden" id="RECIPE_NAME" name="RECIPE_NAME" value="" placeholder="" readonly required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        <input type="hidden" id="searchOption" name="searchOption" value="0" placeholder="" readonly required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        <input type="hidden" id="test" name=""test"" value="0" placeholder="" readonly required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />				
+    </form>
+    <!-- <div class="search_input pb0">        
+        <input type="text"  class="searchWrd"  name="searchWrd" value='' onkeypress="press(event);" title="검색어 입력" />	
+        <span class="searchbtn"><a href="#">검색</a></span>        
+    </div> -->
+    <div class="search_input pb0" id="search_div01">        
+        <input type="text"  class="searchWrd" id="search" name="search" value='' onkeypress="press(event);" title="검색어 입력" />	
+        <span class="searchbtn"><a nohref id="center.searchButton" name="center.searchButton">검색</a></span>        
+    </div>
+
+    <div class="bg_box" id="bg_box01" style="display:none;">
+    	<p class="search_txt" id="totalCntView" name="totalCntView"></p>
+    </div>
+    
+	<div id="tabCon01"></div>
+    <!-- <p class="stitle">요리 테이블 목록</p> -->
+    
+    <!-- <div class="center_list">
+            <ul class="mypage_menu">
+                    <li class="menu01"><a href="#" id="table_cook1">요리 테이블</a></li>
+                    <li class="menu02"><a href="#" id="table_cook2">요리 테이블</a></li>
+                    <li class="menu03"><a href="#" id="table_cook">요리 테이블</a></li>
+                    <li class="menu04"><a href="#" id="table_cook">요리 테이블</a></li>
+                    <li class="menu05"><a href="#" id="table_cook">요리 테이블</a></li>
+                    <li class="menu06"><a href="#" id="table_cook">요리 테이블</a></li>		
+                </ul>	
+    </div> -->
+    <!-- <div class="btn_wrap list_long_btn">
+        <a class="btn_long02" onclick="fn_more();"><span class="more">더보기</span></a>
+    </div> -->
+
+</div>
+
+
+<div class="menu_wrap" id="bottom">
+    <div class="menu">
+        <ul>
+            <li class="mycenter"><a href="#">요리선택</a></li>
+            <li class="center on"><a href="#">재료선택</a></li>
+            <li class="health "><a href="#">맛집추천</a></li>
+            <li class="help"><a href="#">쇼핑몰이동</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- 화면 스크립트 -->
+<script type="text/javascript">
+    // jquery 호출
+    $(function(){
+        // ajax 형태 예시
+        // $.ajax({
+        //     url: '@Url.Action("Action", "Controller")', // post target URL goes here
+        //     type: 'POST',
+        //     data: ajaxData,
+        //     success: function (data, text) {
+
+        //     },
+        //     error: function(request, status, error) {
+
+        //     }
+        // });
+        // 더보기 페이지 리스트 정의
+        var pagingClick = "";
+        var pagingStop = false;
+        var navigatorNum = 0;
+        var lastPageNum = 0;
+        var dataInfoListresult = "N";
+        var count = 0;
+        var totalCount =  0;	//db에서 토탈카운트
+
+        // 히든 폼 정의
+        var formController = new FormViewController( $("#board-form") );
+        // 리스트 정의
+        var cookManager = [{}];
+
+        function numberWithCommas(x){
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
+        }
+        
+        var boardParam = M.data.param("boardParam");
+		  if (boardParam != "" && boardParam != "''" && boardParam != undefined) {
+		  	$("#TAB_TYPE").val(boardParam.TAB_TYPE);
+		  	$("#pageBlock").val(boardParam.PAGE_BLOCK);
+		  	$("#page").val(boardParam.PAGE);
+		  	 M.data.param("boardParam","");
+		} 
+
+        // html 리스트 생성 정의
+        var listHTML = "";
+
+        listHTML = '';
+                    listHTML +='<p class="stitle">요리 테이블 목록</p>';
+                    listHTML +='<div class="center_list">';
+        cookPagingView();
+
+        // $("#board-form").attr("action", "cook.mainList");
+
+        // ajax 통신을 하여 성공적으로 데이터를 들고 올 경우 
+        // 페이지 히든 폼 호출
+        // $(function(sender){
+        function cookPagingView() {
+            // console.log("function sender");
+            // console.log("function sender value:"+sender);
+            // console.log("function sender action:"+sender.action);
+            // if (sender.action == "cook.mainList") {
+                console.log("function sender cook.mainList");
+                    //센터정보 조회
+                    $("#totalCntView").empty();
+                    $('#tabCon01').empty();
+                    $("#totalCount").val(10);	//db에서 가져오는 총 갯수
+                    
+                    // 테이블 목록 JSON 하드 코딩 데이터
+                    var cook_detailJsonArray = new Array();
+                    var cook_detailJson0 = new Object();
+                    var cook_detailJson1 = new Object();
+                    var cook_detailJson2 = new Object();
+                    var cook_detailJson3 = new Object();
+                    var cook_detailJson4 = new Object();
+                    var cook_detailJson5 = new Object();
+                    var cook_detailJson6 = new Object();
+                    var cook_detailJson7 = new Object();
+                    var cook_detailJson8 = new Object();
+                    var cook_detailJson9 = new Object();
+                    
+                    cook_detailJson0.recipe_code = "195453";
+                    cook_detailJson0.recipe_name = "콩비지동그랑땡";
+                    cook_detailJson0.recipe_subDetail = "두부대신 콩비지를 넣어 만든 동그랑땡 맛도 좋아요!";
+                    cook_detailJson0.type_code = "3020001";
+                    cook_detailJson0.type_category = "한식";
+                    cook_detailJson0.food_type_category = "3010018";
+                    cook_detailJson0.food_category = "부침";
+                    cook_detailJson0.cook_time = "30분";
+                    cook_detailJson0.cook_calory = "0Kcal";
+                    cook_detailJson0.cook_quantity = "3인분";
+                    cook_detailJson0.cook_difficulty = "보통";
+                    cook_detailJson0.category_ingredient = "";
+                    cook_detailJson0.category_price = "10,000원";
+                    cook_detailJson0.image_major = "http://file.okdab.com/recipe/148299577268400131.jpg";
+                    cook_detailJson0.image_detail = "http://www.okdab.com/consumer/recipe/recipeView.do?recipeSn=195453";
+                    
+                    cook_detailJsonArray.push(cook_detailJson0);
+
+                    cook_detailJson1.recipe_code = "195428";
+                    cook_detailJson1.recipe_name = "누드김밥";
+                    cook_detailJson1.recipe_subDetail = "건강한 재료로 가득담아 말은 누드김밥! 고기가 없어도 맛있어요!!";
+                    cook_detailJson1.type_code = "3020009";
+                    cook_detailJson1.type_category = "퓨전";
+                    cook_detailJson1.food_type_category = "3010001";
+                    cook_detailJson1.food_category = "밥";
+                    cook_detailJson1.cook_time = "20분";
+                    cook_detailJson1.cook_calory = "0Kcal";
+                    cook_detailJson1.cook_quantity = "3인분";
+                    cook_detailJson1.cook_difficulty = "보통";
+                    cook_detailJson1.category_ingredient = "";
+                    cook_detailJson1.category_price = "3,000원";
+                    cook_detailJson1.image_major = "http://file.okdab.com/recipe/148299332505800120.jpg";
+                    cook_detailJson1.image_detail = "http://www.okdab.com/consumer/recipe/recipeView.do?recipeSn=195428";
+                    
+                    cook_detailJsonArray.push(cook_detailJson1);
+
+                    cook_detailJson2.recipe_code = "180363";
+                    cook_detailJson2.recipe_name = "쪽파 새우강회";
+                    cook_detailJson2.recipe_subDetail = "새우에 쪽파를 감아 간단하게 만들지만 새우와 쪽파의 달콤한 맛과 새콤한 초고추장의 환상의 콤비! 거기에 건강까지 좋은 영양만점 쪽파 새우강회!!";
+                    cook_detailJson2.type_code = "3020009";
+                    cook_detailJson2.type_category = "퓨전";
+                    cook_detailJson2.food_type_category = "3010007";
+                    cook_detailJson2.food_category = "나물/생채/샐러드";
+                    cook_detailJson2.cook_time = "20분";
+                    cook_detailJson2.cook_calory = "0Kcal";
+                    cook_detailJson2.cook_quantity = "2인분";
+                    cook_detailJson2.cook_difficulty = "초보환영";
+                    cook_detailJson2.category_ingredient = "";
+                    cook_detailJson2.category_price = "5,000원";
+                    cook_detailJson2.image_major = "http://file.okdab.com/recipe/148299002655300119.jpg";
+                    cook_detailJson2.image_detail = "http://www.okdab.com/consumer/recipe/recipeView.do?recipeSn=180363";
+                    
+                    cook_detailJsonArray.push(cook_detailJson2);
+
+                    cook_detailJson3.recipe_code = "180344";
+                    cook_detailJson3.recipe_name = "카레토마토달걀볶음밥";
+                    cook_detailJson3.recipe_subDetail = "토마토와 달걀을 넣은 볶음밥에 카레소스를 두른 영양만점 볶음밥";
+                    cook_detailJson3.type_code = "3020009";
+                    cook_detailJson3.type_category = "퓨전";
+                    cook_detailJson3.food_type_category = "3010001";
+                    cook_detailJson3.food_category = "밥";
+                    cook_detailJson3.cook_time = "30분";
+                    cook_detailJson3.cook_calory = "0Kcal";
+                    cook_detailJson3.cook_quantity = "1인분";
+                    cook_detailJson3.cook_difficulty = "초보환영";
+                    cook_detailJson3.category_ingredient = "";
+                    cook_detailJson3.category_price = "3,000원";
+                    cook_detailJson3.image_major = "http://file.okdab.com/recipe/148291443772500013.jpg";
+                    cook_detailJson3.image_detail = "http://www.okdab.com/consumer/recipe/recipeView.do?recipeSn=180344";
+                    
+                    cook_detailJsonArray.push(cook_detailJson3);
+
+                    cook_detailJson4.recipe_code = "180330";
+                    cook_detailJson4.recipe_name = "식빵고구마파이";
+                    cook_detailJson4.recipe_subDetail = "식빵을 이용한 간단 고구마파이! 아이들 영양 간식으로 딱!";
+                    cook_detailJson4.type_code = "3020002";
+                    cook_detailJson4.type_category = "서양";
+                    cook_detailJson4.food_type_category = "3010014";
+                    cook_detailJson4.food_category = "빵/과자";
+                    cook_detailJson4.cook_time = "30분";
+                    cook_detailJson4.cook_calory = "0Kcal";
+                    cook_detailJson4.cook_quantity = "2인분";
+                    cook_detailJson4.cook_difficulty = "초보환영";
+                    cook_detailJson4.category_ingredient = "";
+                    cook_detailJson4.category_price = "5,000원";
+                    cook_detailJson4.image_major = "http://file.okdab.com/recipe/148299577268400131.jpg";
+                    cook_detailJson4.image_detail = "http://www.okdab.com/consumer/recipe/recipeView.do?recipeSn=195453";
+                    
+                    cook_detailJsonArray.push(cook_detailJson4);
+
+                    cook_detailJson5.recipe_code = "120476";
+                    cook_detailJson5.recipe_name = "배추만두";
+                    cook_detailJson5.recipe_subDetail = "배추로 만든 깜찍한 배추주머니 만두! 아삭한 배추와 영양으로 가~득 채운 보기도 좋고 맛도 좋은 배추만두랍니다.";
+                    cook_detailJson5.type_code = "3020001";
+                    cook_detailJson5.type_category = "한식";
+                    cook_detailJson5.food_type_category = "3010006";
+                    cook_detailJson5.food_category = "찜";
+                    cook_detailJson5.cook_time = "30분";
+                    cook_detailJson5.cook_calory = "0Kcal";
+                    cook_detailJson5.cook_quantity = "2인분";
+                    cook_detailJson5.cook_difficulty = "보통";
+                    cook_detailJson5.category_ingredient = "";
+                    cook_detailJson5.category_price = "10,000원";
+                    cook_detailJson5.image_major = "http://file.okdab.com/recipe/148230648948900343.jpg";
+                    cook_detailJson5.image_detail = "http://www.okdab.com/consumer/recipe/recipeView.do?recipeSn=120476";
+                    
+                    cook_detailJsonArray.push(cook_detailJson5);
+
+                    cook_detailJson6.recipe_code = "120476";
+                    cook_detailJson6.recipe_name = "배추만두";
+                    cook_detailJson6.recipe_subDetail = "배추로 만든 깜찍한 배추주머니 만두! 아삭한 배추와 영양으로 가~득 채운 보기도 좋고 맛도 좋은 배추만두랍니다.";
+                    cook_detailJson6.type_code = "3020001";
+                    cook_detailJson6.type_category = "한식";
+                    cook_detailJson6.food_type_category = "3010006";
+                    cook_detailJson6.food_category = "찜";
+                    cook_detailJson6.cook_time = "30분";
+                    cook_detailJson6.cook_calory = "0Kcal";
+                    cook_detailJson6.cook_quantity = "2인분";
+                    cook_detailJson6.cook_difficulty = "보통";
+                    cook_detailJson6.category_ingredient = "";
+                    cook_detailJson6.category_price = "10,000원";
+                    cook_detailJson6.image_major = "http://file.okdab.com/recipe/148230648948900343.jpg";
+                    cook_detailJson6.image_detail = "http://www.okdab.com/consumer/recipe/recipeView.do?recipeSn=120476";
+                    
+                    cook_detailJsonArray.push(cook_detailJson6);
+
+                    cook_detailJson7.recipe_code = "120476";
+                    cook_detailJson7.recipe_name = "배추만두";
+                    cook_detailJson7.recipe_subDetail = "배추로 만든 깜찍한 배추주머니 만두! 아삭한 배추와 영양으로 가~득 채운 보기도 좋고 맛도 좋은 배추만두랍니다.";
+                    cook_detailJson7.type_code = "3020001";
+                    cook_detailJson7.type_category = "한식";
+                    cook_detailJson7.food_type_category = "3010006";
+                    cook_detailJson7.food_category = "찜";
+                    cook_detailJson7.cook_time = "30분";
+                    cook_detailJson7.cook_calory = "0Kcal";
+                    cook_detailJson7.cook_quantity = "2인분";
+                    cook_detailJson7.cook_difficulty = "보통";
+                    cook_detailJson7.category_ingredient = "";
+                    cook_detailJson7.category_price = "10,000원";
+                    cook_detailJson7.image_major = "http://file.okdab.com/recipe/148230648948900343.jpg";
+                    cook_detailJson7.image_detail = "http://www.okdab.com/consumer/recipe/recipeView.do?recipeSn=120476";
+                    
+                    cook_detailJsonArray.push(cook_detailJson7);
+
+                    cook_detailJson8.recipe_code = "120476";
+                    cook_detailJson8.recipe_name = "배추만두";
+                    cook_detailJson8.recipe_subDetail = "배추로 만든 깜찍한 배추주머니 만두! 아삭한 배추와 영양으로 가~득 채운 보기도 좋고 맛도 좋은 배추만두랍니다.";
+                    cook_detailJson8.type_code = "3020001";
+                    cook_detailJson8.type_category = "한식";
+                    cook_detailJson8.food_type_category = "3010006";
+                    cook_detailJson8.food_category = "찜";
+                    cook_detailJson8.cook_time = "30분";
+                    cook_detailJson8.cook_calory = "0Kcal";
+                    cook_detailJson8.cook_quantity = "2인분";
+                    cook_detailJson8.cook_difficulty = "보통";
+                    cook_detailJson8.category_ingredient = "";
+                    cook_detailJson8.category_price = "10,000원";
+                    cook_detailJson8.image_major = "http://file.okdab.com/recipe/148230648948900343.jpg";
+                    cook_detailJson8.image_detail = "http://www.okdab.com/consumer/recipe/recipeView.do?recipeSn=120476";
+                    
+                    cook_detailJsonArray.push(cook_detailJson8);
+
+                    cook_detailJson9.recipe_code = "120476";
+                    cook_detailJson9.recipe_name = "배추만두";
+                    cook_detailJson9.recipe_subDetail = "배추로 만든 깜찍한 배추주머니 만두! 아삭한 배추와 영양으로 가~득 채운 보기도 좋고 맛도 좋은 배추만두랍니다.";
+                    cook_detailJson9.type_code = "3020001";
+                    cook_detailJson9.type_category = "한식";
+                    cook_detailJson9.food_type_category = "3010006";
+                    cook_detailJson9.food_category = "찜";
+                    cook_detailJson9.cook_time = "30분";
+                    cook_detailJson9.cook_calory = "0Kcal";
+                    cook_detailJson9.cook_quantity = "2인분";
+                    cook_detailJson9.cook_difficulty = "보통";
+                    cook_detailJson9.category_ingredient = "";
+                    cook_detailJson9.category_price = "10,000원";
+                    cook_detailJson9.image_major = "http://file.okdab.com/recipe/148230648948900343.jpg";
+                    cook_detailJson9.image_detail = "http://www.okdab.com/consumer/recipe/recipeView.do?recipeSn=120476";
+                    
+                    cook_detailJsonArray.push(cook_detailJson9);
+
+                    JSON.stringify(cook_detailJson0);
+                    JSON.stringify(cook_detailJson1);
+                    JSON.stringify(cook_detailJson2);
+                    JSON.stringify(cook_detailJson3);
+                    JSON.stringify(cook_detailJson4);
+                    JSON.stringify(cook_detailJson5);
+                    JSON.stringify(cook_detailJson6);
+                    JSON.stringify(cook_detailJson7);
+                    JSON.stringify(cook_detailJson8);
+                    JSON.stringify(cook_detailJson9);
+                    // 테이블 목록 JSON 하드 코딩 데이터
+
+                    // 요리 테이블 목록
+                    listHTML = '';
+                    listHTML +='<p class="stitle">요리 테이블 목록</p>';
+                    // listHTML +='<div class="center_list">';
+                    listHTML +='<ul class="mypage_menu">';
+
+                    for(i=0;i<6;i++) {
+                    console.log(cook_detailJsonArray[i]);
+                    cookManager[i] = {};
+                    cookManager[i].RECIPE_CODE = cook_detailJsonArray[i].recipe_code;
+                    cookManager[i].RECIPE_NAME = cook_detailJsonArray[i].recipe_name;
+                    cookManager[i].RECIPE_SUBDETAIL = cook_detailJsonArray[i].recipe_subDetail;
+                    cookManager[i].TYPE_CODE = cook_detailJsonArray[i].type_code;
+                    cookManager[i].TYPE_CATEGORY = cook_detailJsonArray[i].type_category;
+                    cookManager[i].FOOD_TYPE_CATEGORY = cook_detailJsonArray[i].food_type_category;
+                    cookManager[i].FOOD_CATEGORY = cook_detailJsonArray[i].food_category;
+                    cookManager[i].COOK_TIME = cook_detailJsonArray[i].cook_time;
+                    cookManager[i].COOK_CALORY = cook_detailJsonArray[i].cook_calory;
+                    cookManager[i].COOK_QUANTITY = cook_detailJsonArray[i].cook_quantity;
+                    cookManager[i].COOK_DIFFICULTY = cook_detailJsonArray[i].cook_difficulty;
+                    cookManager[i].CATEGORY_INGREDIENT = cook_detailJsonArray[i].category_ingredient;
+                    cookManager[i].CATEGORY_PRICE = cook_detailJsonArray[i].category_price;
+                    cookManager[i].IMAGE_MAJOR = cook_detailJsonArray[i].image_major;
+                    cookManager[i].IMAGE_DETAIL = cook_detailJsonArray[i].image_detail;
+                    
+                    
+                    listHTML +='   <li class="menu0'+i+'" style="background:url('+cookManager[i].IMAGE_MAJOR+') center no-repeat;background-size:100%;">';
+                    listHTML +='       <a nohref id="table_cook'+i+'">'+cookManager[i].RECIPE_NAME+''; 
+                    listHTML +='	</a>';
+
+                    listHTML +='	</div>';
+                    listHTML +='	</li>';
+                    
+                    
+                    }
+                
+                    listHTML +='</ul>';
+                    // listHTML +='</div>';
+                    listHTML +='<a class="btn_more"></a>';
+                    //$("#totalCntView").append("총 "+numberWithCommas(parseInt(result.totalCnt))+"센터중 "+numberWithCommas(parseInt(result.centerList.length))+"곳의 센터가 검색되었습니다.");
+                    $("#totalCntView").append('<p class="search_txt" >총 <strong>'+numberWithCommas(parseInt(cook_detailJsonArray.length))+'</strong>테이블 중 <span>'+numberWithCommas(parseInt(cook_detailJsonArray.length))+'</span>의 요리 테이블이 검색되었습니다.</p>');
+
+                    $("#tabCon01").append(listHTML);
+                    $('#bg_box01').css("display", "block"); 
+                    //더보기 or 페이징
+                    pagingView($("#page").val());
+            // }
+
+            //페이징
+            function pagingView(startIndex) {
+            var db = {};	//임시
+            // db.totalCount = $("#totalCount").val();	//임시
+            db.totalCount = 24;
+                $(".paging").empty();
+                var pagingHTML = "";
+                var page = parseInt($("#page").val());	//db에서 현재 페이지에 해당하는 값
+                var totalCount = db.totalCount;	//db에서 토탈카운트
+                var pageBlock = parseInt($("#pageBlock").val());	//db에서 계산값에 의해 1페이지당 page 몇개를 뿌리는지 확인
+                var firstPageNum = 1;
+                    lastPageNum = Math.floor((totalCount-1)/pageBlock)+1;
+                var lastPageNumBlock = lastPageNum;
+
+                console.log("function pagingView totalCount:"+totalCount);
+                console.log("function pagingView pageBlock:"+pageBlock);
+
+                if (lastPageNumBlock > $("#pageBlock").val()) {
+                    lastPageNumBlock = $("#pageBlock").val();
+                } 
+                    
+                if (pagingStop == false) {
+                    navigatorNum = lastPageNumBlock;
+                }
+                var previewPageNum = page == 1? 1: page-1;
+                var nextPageNum = page == lastPageNum ? lastPageNum : page+1;
+                var indexNum = startIndex <= navigatorNum ? 0 : parseInt((startIndex-1)/navigatorNum) * navigatorNum;
+            
+                if(totalCount >= 1) {		
+            
+                    if(startIndex<lastPageNum){
+                        pagingHTML += '<div class="btn_wrap list_long_btn">';
+                        pagingHTML += '<a class="btn_long02" id="moreButton" name="moreButton"><span class="more">더보기</span></a>';
+                        pagingHTML += '</div>';
+                        $(".btn_more").empty();
+                        $(".btn_more").append(pagingHTML);
+                    } else {
+                        $(".btn_more").empty();
+                    }
+                    
+                    $("#moreButton").click(function (e){
+                        //console.log('$("#pageBlock").val():'+$("#pageBlock").val()+'|$("#pageBlock_Og").val():'+$("#pageBlock_Og").val());
+                        $("#TAB_TYPE").val("tab01");
+                        $("#page").val(1);
+                        $("#pageBlock").val(parseInt($("#pageBlock").val())+parseInt($("#pageBlock_Og").val()));
+                        cookInfoList();
+                    });
+                    
+                }
+            }
+
+            //검색 하기
+            $(document).off("click","a");
+            $(document).on("click","a",function(){
+                var pagingInfo = $(this).attr('name');
+                var pageInfoNum = "";
+                //var setPageBlock = 0;
+                var searchType = {};
+
+            if (pagingInfo == "a_tab01") {
+                $("#TAB_TYPE").val("tab01");
+                $('#tab01').addClass("on");
+                $('#tab02').removeClass("on");
+                $('#search_div01').css("display", "block"); 
+                $('#bg_box01').css("display", "block"); 
+                $("#page").val(1);
+                cookInfoList();
+            }
+
+            function search(){
+                cookInfoList();
+            }
+
+            function searchDiv(){
+                if ($('#searchOption').val() != "") {
+                    $('#search').attr("disabled",false);
+                } else {
+                    $("#search").val("");
+                    $('#search').attr("disabled","disabled");
+                }
+            }
+            
+            $('#searchOption').change(function() {
+                if ($('#searchOption').val() != "") {
+                    $('#search').attr("disabled",false);
+                } else {
+                    $("#search").val("");
+                    $('#search').attr("disabled","disabled");
+                }
+            });
+
+            if (pagingInfo == "center.searchButton") {
+            if ($("#searchOption").val() == "TITLE") {
+                $("#TITLE").val($("#search").val());
+                $("#USER_NAME").val("");
+                $("#REG_DATE").val("");
+            } else 
+            if ($("#searchOption").val() == "USER_NAME") {
+            
+                $("#TITLE").val("");
+                $("#USER_NAME").val($("#search").val());
+                $("#REG_DATE").val("");
+            } else 
+            if ($("#searchOption").val() == "REG_DATE") {
+                $("#TITLE").val("");
+                $("#USER_NAME").val("");
+                $("#REG_DATE").val($("#search").val());
+            } else {
+                $("#TITLE").val("");
+                $("#USER_NAME").val("");
+                $("#REG_DATE").val("");	
+            }
+            //	console.log("search:"+searchType.TITLE+"|"+searchType.USER_NAME+"|"+searchType.REG_DATE);
+                $('#search_div01').css("display", "block"); 
+                $('#bg_box01').css("display", "block"); 
+                cookInfoList();
+                }
+            });
+        }
+        // });
+
+            // 테이블 리스트
+            function cookInfoList(){
+                $("#tabCon01").empty();
+                // $("#tabCon02").empty();
+                var pagingHTML = "";
+                dataInfoListresult = "";
+            
+                var data = {};
+                var responseCode = data.responseCode;
+                var	responseData = "";
+                var sessionYn = "";
+                var count = 1;
+
+                if (responseCode != "OK"){
+                    dataInfoListresult = "N";
+                    count = 0;
+                    totalCount =  0;	//db에서 토탈카운트
+                    count = 0;
+                }
+
+                var boardParam = M.data.param("boardParam");
+                if (boardParam != "" && boardParam != "''" && boardParam != undefined) {
+                    $("#TAB_TYPE").val(boardParam.TAB_TYPE);
+                    $("#pageBlock").val(boardParam.PAGE_BLOCK);
+                    $("#page").val(boardParam.PAGE);
+
+                    console.log("boardParam.TAB_TYPE: "+boardParam.TAB_TYPE);
+                    console.log("boardParam.PAGE_BLOCK: "+boardParam.PAGE_BLOCK);
+                    console.log("boardParam.PAGE: "+boardParam.PAGE);
+                } 
+                        
+                if ($("#searchOption").val() == "COOK_NAME") {
+                    $("#COOK_NAME").val($("#search").val());
+                } else {
+                    $("#COOK_NAME").val("");
+                }	
+
+                cookPagingView();
+            }
+    }); 
+     
+    </script>
+</body>
+</html>
