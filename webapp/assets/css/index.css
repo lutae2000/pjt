@@ -976,3 +976,10 @@ html { -webkit-text-size-adjust: none; }
 .card_layer_div .close{height:20px;margin-bottom:10px;text-align: right;}
 .card_layer_div .close a{height:20px;width:20px;display:block;float:right}
 .card_layer_div .close a img{width:100%}
+
+/*새로 추가한 부분*/
+.tabCon_kor_title{border-top:1px solid #f4f4f4;color:#333;height:50px;line-height:50px;background:#fff;font-size:18px;padding-left:10px;font-weight: bold}
+.tabCon_kor_list_mypage_menu{margin: 15px;/* border-top: 1px solid #e9e9e9; */background:#fff;}
+.tabCon_kor_list_mypage_menu li img{width:100%;max-width:200px}
+.tabCon_kor_list_mypage_menu li:nth-child(2n){/* border-right:1px solid #e9e9e9 */}
+.tabCon_kor_list_mypage_menu:after{display:block;content:'';clear:both;}

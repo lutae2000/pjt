@@ -167,7 +167,7 @@ $(function(){
 
 <h3>연관검색</h3>
 <c:forEach items="${recipe.contentRecommend }" var="contentRecommend">
-	<a href="${pageContext.request.contextPath}/readContent?recipe_code=${contentRecommend.recipe_code}" ><img src="${contentRecommend.img_url }"width="200"></a>
+	<a href="${pageContext.request.contextPath}/readContent?recipe_code=${contentRecommend.recipe_code}" >${contentRecommend.recipe_name}<img src="${contentRecommend.img_url }"width="200"></a>
 </c:forEach>
 </body>
 </html>

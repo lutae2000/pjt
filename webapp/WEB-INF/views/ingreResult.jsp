@@ -10,10 +10,7 @@
 </head>
 <body>
 
-<form id="search" action="${pageContext.request.contextPath }/list/search" method="get">
-    	<input type="text" id="kwd" name="kwd" placeholder="메뉴 검색">
-    	<input type="submit" value="검색">
-    </form>
+
 
 총 ${selectedIngreResultMap.totalCount } 레시피중 ${selectedIngreResultMap.searchCount }개가 검색되었습니다
 

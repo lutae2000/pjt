@@ -25,6 +25,9 @@
 .mypage_menu li:nth-child(2n){/* border-right:1px solid #e9e9e9 */}
 .mypage_menu:after{display:block;content:'';clear:both;}
 
+.tabList_table_menu{display: block;opacity: 0.6;margin-top: 88px;text-align: center;color: #fff;height: 20%;background: black;font-size: 17px;font-weight: 800;}
+/* .tabList_table_img{width:100%; max-width:200px;} */
+
 /* .mypage_menu li.menu01{background:url(../images/icon_mypage_menu01.png) center 20px no-repeat;background-size:50px;}
 .mypage_menu li.menu02{background:url(../images/icon_mypage_menu02.png) center 20px no-repeat;background-size:50px;}
 .mypage_menu li.menu03{background:url(../images/icon_mypage_menu03.png) center 20px no-repeat;background-size:50px;}
@@ -70,27 +73,24 @@
     	<input type="submit" value="검색">
     </form>
     
-
- 	<table>
-	<c:forEach items="${searchedList.std_info_List}" var="vo">
-		<tr>
-			
-			
-			
-			 <td>
-			 
-			 	<a href="${pageContext.request.contextPath}/readContent?recipe_code=${vo.recipe_code }">
-			 		${vo.recipe_name }<img src="${vo.img_url}" width="300">
+	<!-- <c:forEach items="${searchedList.std_info_List}" var="vo">
+		
+                <img class="tabList_table_img" src="${vo.img_url}"/>
+			 	<a src="${pageContext.request.contextPath}/readContent?recipe_code=${vo.recipe_code }" class="tabList_table_menu">
+			 		${vo.recipe_name }
 			 	</a>
 			 
-			 </td> 
-			 
-		</tr>
-	</c:forEach>
-	
-	</table>
-
+    </c:forEach> -->
     
+    <c:forEach items="${searchedList.std_info_List}" var="vo">
+		
+        <li class="tabList_table_img" style="background:url(${vo.img_url}) center no-repeat; position: relative; background-size: 100%;float: left; height: 120px; text-align: center; width: 50%; max-width: 200px;">
+            <a src="${pageContext.request.contextPath}/readContent?recipe_code=${vo.recipe_code }" class="tabList_table_menu">
+                ${vo.recipe_name }
+            </a>
+        </li>
+			 	
+	</c:forEach>
 	<div id="tabCon01"></div>
     <!-- <p class="title">요리 테이블 목록</p> -->
     
@@ -113,3 +113,11 @@
 
 </body>
 </html>
+<!-- 화면 스크립트 -->
+<script type="text/javascript">
+    // jquery 호출
+    $(function(){
+
+    });
+
+</script>
