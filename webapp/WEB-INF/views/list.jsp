@@ -25,7 +25,7 @@
 .mypage_menu li:nth-child(2n){/* border-right:1px solid #e9e9e9 */}
 .mypage_menu:after{display:block;content:'';clear:both;}
 
-.tabList_table_menu{display: block;opacity: 0.6;margin-top: 88px;text-align: center;color: #fff;height: 20%;background: black;font-size: 17px;font-weight: 800;}
+.tabList_table_menu{display: block;opacity: 0.6;margin-top: 82px;text-align: center;color: #fff;height: 20%;background: black;font-size: 18px;font-weight: 800;}
 /* .tabList_table_img{width:100%; max-width:200px;} */
 
 /* .mypage_menu li.menu01{background:url(../images/icon_mypage_menu01.png) center 20px no-repeat;background-size:50px;}
@@ -40,8 +40,8 @@
 <body>
 <div class="header_wrap" id="top">
     <div class="header">
-        <h1 class="logo"><a href="${pageContext.request.contextPath}/main.html"><img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="피트모아"></a></h1>
-        <span class="menu"><a href="javascript:fn_back();"><img src="${pageContext.request.contextPath}/assets/images/menu.png" alt="메뉴"></a></span>
+        <h1 class="logo"><a href="${pageContext.request.contextPath}/main.html"><img style="width:33px;" src="${pageContext.request.contextPath}/assets/images/img_month_kcal.png" alt="피트모아"></a></h1>
+        <!-- <span class="menu"><a href="javascript:fn_back();"><img src="${pageContext.request.contextPath}/assets/images/menu.png" alt="메뉴"></a></span> -->
         <span class="mypage"><a href="./sub102.html"><img src="${pageContext.request.contextPath}/assets/images/mypage.png" alt="마이페이지"></a></span>
     </div>
 </div>
@@ -72,15 +72,6 @@
     	<input type="text" id="kwd" name="kwd" placeholder="메뉴 검색">
     	<input type="submit" value="검색">
     </form>
-    
-	<!-- <c:forEach items="${searchedList.std_info_List}" var="vo">
-		
-                <img class="tabList_table_img" src="${vo.img_url}"/>
-			 	<a src="${pageContext.request.contextPath}/readContent?recipe_code=${vo.recipe_code }" class="tabList_table_menu">
-			 		${vo.recipe_name }
-			 	</a>
-			 
-    </c:forEach> -->
     
     <c:forEach items="${searchedList.std_info_List}" var="vo">
 		
@@ -117,7 +108,7 @@
 <script type="text/javascript">
     // jquery 호출
     $(function(){
-
+        
     });
 
 </script>

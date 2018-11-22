@@ -8,11 +8,21 @@
 <style>
 .ingreSelect_title {margin: 0 auto 8px;width: 125px;height: 26px;text-align: center;line-height: 26px;border-radius: 14px;font-size: 15px;color: #fff;}
 .ingreSelect_table {
-    margin: 15px;
+    margin: 10px;
     background: #fff;
     padding: 10px;
     border: 2px solid #b0c9ff;
 }
+.submit_btn {
+    width: 200px;
+    height: 40px;
+    background-color: #2b6bf8;
+    color: #fff;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
 
 *{font-family: 'Roboto', sans-serif;}
 
@@ -112,7 +122,7 @@ body label {
 <body>
 <form class="ingreSelect" method="post" action="${pageContext.request.contextPath }/recipeResult">
 	
-	<b class="ingreSelect_title" style="background-color:#ca93e3;">고기류</b><br>
+	<h3 class="ingreSelect_title" style="background-color:#ca93e3;">고기류</h3><br>
 	<ul class="ingreSelect_table">
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="쇠고기">쇠고기
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="닭고기">닭고기
@@ -123,7 +133,7 @@ body label {
 	</ul>
 	<hr>
 	
-	<b>해산물</b><br>
+	<h3 class="ingreSelect_title" style="background-color:#93e3a7;">해산물</h3><br>
 	<ul class="ingreSelect_table">
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="갈치">갈치
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="고등어">고등어
@@ -145,7 +155,8 @@ body label {
 	
 	
 	
-	<b>조미료</b><br>
+	<h3 class="ingreSelect_title" style="background-color:#e393a7;">조미료</h3><br>
+	<ul class="ingreSelect_table">
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="간장">간장
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="식초">식초
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="설탕">설탕
@@ -165,11 +176,12 @@ body label {
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="된장">된장
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="와사비">와사비
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="소금">소금
-	
+</ul>
 	
 	
 	<hr>
-	<b>채소류</b><br>
+	<h3 class="ingreSelect_title" style="background-color:#93a2e3;">채소류</h3><br>
+	<ul class="ingreSelect_table">
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="양파">양파
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="쪽파">쪽파
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="대파">대파
@@ -207,21 +219,23 @@ body label {
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="토마토">토마토
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="파프리카">파프리카
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="피망">피망
-	
+</ul>
 	
 	<hr>
 	
 	
-	<b>버섯류</b><br>
+	<h3 class="ingreSelect_title" style="background-color:#e3c393;">버섯류</h3><br>
+	<ul class="ingreSelect_table">
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="느타리버섯">느타리버섯
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="목이버섯">목이버섯
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="새송이버섯">새송이버섯
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="양송이머섯">양송이버섯
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="팽이버섯">팽이버섯
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="표고버섯">표고버섯
-	
+</ul>
 	<hr>
-	<b>기타재료</b><br>
+	<h3 class="ingreSelect_title" style="background-color:#c5c5c5;">기타재료</h3><br>
+	<ul class="ingreSelect_table">
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="바질">바질
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="매실액">매실액
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="게맛살">게맛살
@@ -253,8 +267,8 @@ body label {
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="찹쌀가루">찹쌀가루
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="통깨">통깨
 	<input type="checkbox" class="option-input checkbox" name="ingreInfo" value="파슬리">파슬리
-	
-	<br><input type="submit">
+</ul>
+	<br><input class="submit_btn"type="submit">
 </form>
 
 

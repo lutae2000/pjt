@@ -47,6 +47,22 @@ $(function(){
 
 .cook_info_tab li{background: url(./images/icon_mypage_menu04.png) center -3px no-repeat;width:33.3%;background-size: 50px;float:left;height:45px;line-height:45px;text-align:center;height: 60px;}
 .cook_info_tab li a{color:#333;margin-top: 26px;font-size:16px;display:block;line-height:45px;font-weight:bold;}
+
+.tabCon_list_Name{display: block;/* margin-top: 96px; */box-shadow: border-box;font-size: 25px;font-weight: 800;background: black;color: #fff;opacity: 0.6;height: 20%;/* width:200px; */text-align: center;}
+.tabCon_kor_table_img{width: 100%;/* max-width:200px; */max-height: 250px;}
+.tabCon_kor_table_menu{/* display: block; */width: 100%;max-height: 230px;/* margin-top: 96px; */box-shadow: border-box;/* font-size: 25px; *//* font-weight: 800; */background: black;/* color: #fff; *//* opacity: 0.6; */height: 20%;/* width:200px; */text-align: center;}
+
+.Con_select{
+	margin-top: 10px;
+    font-size: 20px;
+}
+.cont_text_tile{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+	
+.wrap{min-width:300px;width:100%;margin:0 auto;position:relative;}
 </style>
 
 
@@ -55,7 +71,7 @@ $(function(){
 <body>
 <div class="header_wrap" id="top">
     <div class="header">
-        <h1 class="logo"><a href="${pageContext.request.contextPath }/main"><img src="${pageContext.request.contextPath }/assets/images/logo.png" alt="피트모아"></a></h1>
+        <h1 class="logo"><a href="${pageContext.request.contextPath }/main"><img style="width:33px;"src="${pageContext.request.contextPath }/assets/images/img_month_kcal.png" alt="피트모아"></a></h1>
         <span class="menu"><a href="javascript:fn_back();"><img src="${pageContext.request.contextPath }/assets/images/menu.png" alt="메뉴"></a></span>
         <span class="mypage"><a href="${pageContext.request.contextPath }/sub102"><img src="${pageContext.request.contextPath }/assets/images/mypage.png" alt="마이페이지"></a></span>
     </div>
@@ -69,7 +85,7 @@ $(function(){
 <div class="cook_info">
         <dd>
             <div class="map_div">
-				<h1>${recipe.std_info_Vo.recipe_name} </h1>
+				<h1 class="cont_text_tile">${recipe.std_info_Vo.recipe_name} </h1>
 				<img src="${recipe.std_info_Vo.img_url }" width="300">
 			</div>
         </dd>
@@ -141,19 +157,17 @@ $(function(){
 <hr>
 
 <h3>요리과정</h3>
-<ol>
 	<c:forEach items="${recipe.howtocookList }" var="htcl">
-	<li>
+	<li type="1">
 		${htcl.how_to_cook }<img src="${htcl.how_to_cook_img }" width="200" align="middle" >
 	</li>
 	
 	</c:forEach>
-</ol>
 
 <hr>
 
 
-<h4>조리 팁</h4>
+<h4 class="Con_select">조리 팁</h4>
 
 <c:forEach items="${recipe.howtocookList }" var="htc">
 	<ul>
@@ -165,9 +179,20 @@ $(function(){
 
 <hr>
 
-<h3>연관검색</h3>
+<h3 class="Con_select">연관검색</h3>
 <c:forEach items="${recipe.contentRecommend }" var="contentRecommend">
-	<a href="${pageContext.request.contextPath}/readContent?recipe_code=${contentRecommend.recipe_code}" >${contentRecommend.recipe_name}<img src="${contentRecommend.img_url }"width="200"></a>
+	<a class="tabCon_kor_table_img" href="${pageContext.request.contextPath}/readContent?recipe_code=${contentRecommend.recipe_code}" >
+		<img src="${contentRecommend.img_url }"width="200" class="tabCon_kor_table_menu">
+		<div class="tabCon_list_Name">
+				${contentRecommend.recipe_name}
+		</div></a>
+		
 </c:forEach>
+<!-- 
+<a class="tabCon_kor_table_img" href="${pageContext.request.contextPath}/readContent?recipe_code=${recommendKorList.recipe_code }" > 
+	<img src="${recommendKorList.img_url }" class="tabCon_kor_table_menu">
+	<div class="tabCon_list_Name">
+			${recommendKorList.recipe_name }
+	</div></a> -->
 </body>
 </html>

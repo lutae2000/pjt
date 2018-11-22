@@ -6,23 +6,34 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/index.css" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/libs/jquery/jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/libs/jquery/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/libs/instance/instance.ui.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/ui/view.js"></script>
+<script type="text/javaScript" language="javascript">
+
+</script>
 <style>
-.tabCon_kor_title{border-top:1px solid #f4f4f4;color: #686868;height:50px;line-height:50px;background: linear-gradient(106deg, #e6e9f9, #b6bcf4);font-size: 30px;padding-left: 25px;font-weight: 800;transition: padding 0.5s ease-out;}
-.tabCon_Chn_title{border-top:1px solid #f4f4f4;color: #686868;height:50px;line-height:50px;background: linear-gradient(106deg, #f3e6f9, #d9b6f4);font-size: 30px;padding-left: 25px;font-weight: 800;transition: padding 0.5s ease-out;}
-.tabCon_Jpn_title{border-top:1px solid #f4f4f4;color: #686868;height:50px;line-height:50px;background: linear-gradient(106deg, #e3fffc, #b5eae8);font-size: 30px;padding-left: 25px;font-weight: 800;transition: padding 0.5s ease-out;}
-.tabCon_East_title{border-top:1px solid #f4f4f4;color: #686868;height:50px;line-height:50px;background: linear-gradient(106deg, rgb(246, 249, 230), #f4f0b6);font-size: 30px;padding-left: 25px;font-weight: 800;transition: padding 0.5s ease-out;}
-.tabCon_Fus_title{border-top:1px solid #f4f4f4;color: #686868;height:50px;line-height:50px;background: linear-gradient(106deg, #f9e6e8, #f4b6be);font-size: 30px;padding-left: 25px;font-weight: 800;transition: padding 0.5s ease-out;}
-.tabCon_West_title{border-top:1px solid #f4f4f4;color: #686868;height:50px;line-height:50px;background: linear-gradient(106deg, #e6f8f9, #b6ebf4);font-size: 30px;padding-left: 25px;font-weight: 800;transition: padding 0.5s ease-out;}
+.tabCon_kor_title{border-top:1px solid #f4f4f4;color: #686868;height:50px;line-height:50px;background: linear-gradient(106deg, #e6e9f9, #b6bcf4);font-size: 30px;padding-left: 25px;font-weight: 800;transition: padding 0.5s ease-out; margin-bottom: 20px;}
+.tabCon_Chn_title{border-top:1px solid #f4f4f4;color: #686868;height:50px;line-height:50px;background: linear-gradient(106deg, #f3e6f9, #d9b6f4);font-size: 30px;padding-left: 25px;font-weight: 800;transition: padding 0.5s ease-out; margin-bottom: 20px;}
+.tabCon_Jpn_title{border-top:1px solid #f4f4f4;color: #686868;height:50px;line-height:50px;background: linear-gradient(106deg, #e3fffc, #b5eae8);font-size: 30px;padding-left: 25px;font-weight: 800;transition: padding 0.5s ease-out; margin-bottom: 20px;}
+.tabCon_East_title{border-top:1px solid #f4f4f4;color: #686868;height:50px;line-height:50px;background: linear-gradient(106deg, rgb(246, 249, 230), #f4f0b6);font-size: 30px;padding-left: 25px;font-weight: 800;transition: padding 0.5s ease-out; margin-bottom: 20px;}
+.tabCon_Fus_title{border-top:1px solid #f4f4f4;color: #686868;height:50px;line-height:50px;background: linear-gradient(106deg, #f9e6e8, #f4b6be);font-size: 30px;padding-left: 25px;font-weight: 800;transition: padding 0.5s ease-out; margin-bottom: 20px;}
+.tabCon_West_title{border-top:1px solid #f4f4f4;color: #686868;height:50px;line-height:50px;background: linear-gradient(106deg, #e6f8f9, #b6ebf4);font-size: 30px;padding-left: 25px;font-weight: 800;transition: padding 0.5s ease-out; margin-bottom: 20px;}
 .tabCon_Ital_title{border-top:1px solid #f4f4f4;color: #686868;height:50px;line-height:50px;background: linear-gradient(106deg, #e6f9ee, #b6f4dc);font-size: 30px;padding-left: 25px;font-weight: 800;transition: padding 0.5s ease-out;}
 
 .tabCon_kor_table_sub {padding-left: 10px; color: #fff; background:#4c73c6; font-size:17pt; font-weight: 700; border-bottom: 1px solid #dfdfdf;}
 
 .tabCon_kor_list_mypage_menu{margin: 15px;/* border-top: 1px solid #e9e9e9; */background:#fff;}
-.tabCon_kor_table_img{width:100%;/* max-width:200px; */max-height: 160px;}
+.tabCon_kor_table_img{width: 100%;/* max-width:200px; */max-height: 250px;}
 .tabCon_kor_list_mypage_menu li:nth-child(2n){/* border-right:1px solid #e9e9e9 */}
 .tabCon_kor_list_mypage_menu:after{display:block;content:'';clear:both;}
 
-.tabCon_kor_table_menu{display: block;/* margin-top: 96px; */box-shadow: border-box;font-size: 25px;font-weight: 800;background: black;color: #fff;opacity: 0.6;height: 20%;/* width:200px; */text-align: center;}
+.tabCon_kor_table_menu{/* display: block; */width: 100%;max-height: 230px;/* margin-top: 96px; */box-shadow: border-box;/* font-size: 25px; *//* font-weight: 800; */background: black;/* color: #fff; *//* opacity: 0.6; */height: 20%;/* width:200px; */text-align: center;}
+
+.tabCon_list_Name{display: block;/* margin-top: 96px; */box-shadow: border-box;font-size: 25px;font-weight: 800;background: black;color: #fff;opacity: 0.6;height: 20%;/* width:200px; */text-align: center;}
+
 </style>
 </head>
 <body>
@@ -33,7 +44,11 @@
 <div class="tabCon_kor_list">
 	<ul class="tabCon_kor_list_mypage_menu">
 		<c:forEach items="${recommendRecipe.recommendKorList}" var="recommendKorList">
-		<img class="tabCon_kor_table_img" src="${recommendKorList.img_url }"/> <a src="${pageContext.request.contextPath}/readContent?recipe_code=${recommendKorList.recipe_code }" class="tabCon_kor_table_menu">${recommendKorList.recipe_name }</a>
+		<a class="tabCon_kor_table_img" href="${pageContext.request.contextPath}/readContent?recipe_code=${recommendKorList.recipe_code }" > 
+			<img src="${recommendKorList.img_url }" class="tabCon_kor_table_menu">
+			<div class="tabCon_list_Name">
+					${recommendKorList.recipe_name }
+			</div></a>
 		
 		</c:forEach>
 	</ul>
@@ -53,8 +68,12 @@
 	<div class="tabCon_kor_list">
 		<ul class="tabCon_kor_list_mypage_menu">
 			<c:forEach items="${recommendRecipe.recommendChnList}" var="recommendChnList">
-			<img class="tabCon_kor_table_img" src="${recommendChnList.img_url }"/> <a src="${pageContext.request.contextPath}/readContent?recipe_code=${recommendChnList.recipe_code }" class="tabCon_kor_table_menu">${recommendChnList.recipe_name }</a>
-			
+			<a class="tabCon_kor_table_img" href="${pageContext.request.contextPath}/readContent?recipe_code=${recommendChnList.recipe_code }"> 
+				
+			<img src="${recommendChnList.img_url }" class="tabCon_kor_table_menu">
+			<div class="tabCon_list_Name">
+					${recommendChnList.recipe_name }
+			</div></a>
 			</c:forEach>
 		</ul>
 	</div>
@@ -73,8 +92,12 @@
 	<div class="tabCon_kor_list">
 		<ul class="tabCon_kor_list_mypage_menu">
 			<c:forEach items="${recommendRecipe.recommendJpnList}" var="recommendJpnList">
-			<img class="tabCon_kor_table_img" src="${recommendJpnList.img_url }"/> <a src="${pageContext.request.contextPath}/readContent?recipe_code=${recommendJpnList.recipe_code }" class="tabCon_kor_table_menu">${recommendJpnList.recipe_name }</a>
+			<a class="tabCon_kor_table_img" href="${pageContext.request.contextPath}/readContent?recipe_code=${recommendJpnList.recipe_code }"> 
 			
+			<img src="${recommendJpnList.img_url }" class="tabCon_kor_table_menu">
+			<div class="tabCon_list_Name">
+					${recommendJpnList.recipe_name }
+			</div></a>
 			</c:forEach>
 		</ul>
 	</div>
@@ -93,8 +116,12 @@
 	<div class="tabCon_kor_list">
 		<ul class="tabCon_kor_list_mypage_menu">
 			<c:forEach items="${recommendRecipe.recommendEastList}" var="recommendEastList">
-			<img class="tabCon_kor_table_img" src="${recommendEastList.img_url }"/> <a src="${pageContext.request.contextPath}/readContent?recipe_code=${recommendEastList.recipe_code }" class="tabCon_kor_table_menu">${recommendEastList.recipe_name }</a>
+			<a class="tabCon_kor_table_img" href="${pageContext.request.contextPath}/readContent?recipe_code=${recommendEastList.recipe_code }"> 
 			
+			<img src="${recommendEastList.img_url }" class="tabCon_kor_table_menu">
+			<div class="tabCon_list_Name">
+					${recommendEastList.recipe_name }
+			</div></a>
 			</c:forEach>
 		</ul>
 	</div>
@@ -113,8 +140,12 @@
 	<div class="tabCon_kor_list">
 		<ul class="tabCon_kor_list_mypage_menu">
 			<c:forEach items="${recommendRecipe.recommendFusList}" var="recommendFusList">
-			<img class="tabCon_kor_table_img" src="${recommendFusList.img_url }"/> <a src="${pageContext.request.contextPath}/readContent?recipe_code=${recommendFusList.recipe_code }" class="tabCon_kor_table_menu">${recommendFusList.recipe_name }</a>
+			<a class="tabCon_kor_table_img" href="${pageContext.request.contextPath}/readContent?recipe_code=${recommendFusList.recipe_code }">
 			
+			<img src="${recommendFusList.img_url }" class="tabCon_kor_table_menu">
+			<div class="tabCon_list_Name">
+					${recommendFusList.recipe_name }
+			</div></a>
 			</c:forEach>
 		</ul>
 	</div>
@@ -133,8 +164,12 @@
 	<div class="tabCon_kor_list">
 		<ul class="tabCon_kor_list_mypage_menu">
 			<c:forEach items="${recommendRecipe.recommendWestList}" var="recommendWestList">
-			<img class="tabCon_kor_table_img" src="${recommendWestList.img_url }"/> <a src="${pageContext.request.contextPath}/readContent?recipe_code=${recommendWestList.recipe_code }" class="tabCon_kor_table_menu">${recommendWestList.recipe_name }</a>
+			<a class="tabCon_kor_table_img" href="${pageContext.request.contextPath}/readContent?recipe_code=${recommendWestList.recipe_code }"> 
 			
+			<img src="${recommendWestList.img_url }" class="tabCon_kor_table_menu">
+			<div class="tabCon_list_Name">
+					${recommendWestList.recipe_name }
+			</div></a>
 			</c:forEach>
 		</ul>
 	</div>
@@ -154,8 +189,12 @@
 	<div class="tabCon_kor_list">
 		<ul class="tabCon_kor_list_mypage_menu">
 			<c:forEach items="${recommendRecipe.recommendItalList}" var="recommendItalList">
-			<img class="tabCon_kor_table_img" src="${recommendItalList.img_url }"/> <a src="${pageContext.request.contextPath}/readContent?recipe_code=${recommendItalList.recipe_code }" class="tabCon_kor_table_menu">${recommendItalList.recipe_name }</a>
+			<a class="tabCon_kor_table_img" href="${pageContext.request.contextPath}/readContent?recipe_code=${recommendItalList.recipe_code }"> 
 			
+			<img src="${recommendItalList.img_url }" class="tabCon_kor_table_menu">
+			<div class="tabCon_list_Name">
+					${recommendItalList.recipe_name }
+			</div></a>
 			</c:forEach>
 		</ul>
 	</div>
@@ -170,3 +209,13 @@
 
 </body>
 </html>
+
+<!-- 화면 스크립트 -->
+<script type="text/javascript">
+    // jquery 호출
+    $(function(){
+
+    });
+
+</script>
+
